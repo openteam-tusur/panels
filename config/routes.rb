@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'application#index'
+  get 'panel/show'
+  resources:'panels', :only => :show
 end
