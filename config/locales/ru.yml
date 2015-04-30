@@ -1,0 +1,11 @@
+ru:
+  hello: Привет
+
+  app:
+    title: Panels
+
+  page_title:
+    application:
+      index: Главная
+    admin_dashboard:
+        index: Управление

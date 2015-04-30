@@ -1,5 +1,4 @@
-
-class PanelsController < ActionController::Base
+class PanelsController < ApplicationController
   protect_from_forgery with: :exception
   def content_base
   @content_base = {
@@ -53,17 +52,22 @@ class PanelsController < ActionController::Base
       }}
   }
   end
+
   def show
+    params_check
     @content = content_base[params[:id]][next_slide]
     @content[:data_id] = next_slide
   end
 
   def next_slide
-
     if params[:adv_id] && content_base[params[:id]][ (params[:adv_id].to_i+ 1).to_s ]
       (params[:adv_id].to_i + 1).to_s
     else
       '1'
     end
+  end
+
+  def params_check
+    params[:id] = '1' if params[:id].nil?
   end
 end
