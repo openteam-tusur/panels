@@ -9,6 +9,9 @@
       url: url
       data: { current: slide }
       error: (jqXHR, textStatus, errorThrown) ->
+        clearTimeout(timer)
+        $('.data').hide().html(jqXHR.responseText)
+        $('.data').css('white-space', 'pre').fadeIn()
         console.error errorThrown if console && console.error
         return
       success: (data, textStatus, jqXHR) ->
@@ -18,9 +21,9 @@
         $('.data').fadeOut ->
           $('.data').replaceWith(response.html())
           $('.data').hide().fadeIn()
-        setTimeout update_panel, timeout * 1000
+        timier = setTimeout update_panel, timeout * 1000
         return
 
-  setTimeout update_panel, timeout * 1000
+  timer = setTimeout update_panel, timeout * 1000
 
   return
