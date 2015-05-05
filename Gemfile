@@ -4,7 +4,7 @@ group :default do
   gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
   gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
   gem 'coffee-rails', '~> 4.1.0'
-  gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'master'
+  gem 'compass-rails', '~> 2.0.4'
   gem 'gravtastic'
   gem 'jquery-rails'
   gem 'openteam-commons'

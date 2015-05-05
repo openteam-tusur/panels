@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/Compass/compass-rails
-  revision: db1f12e800cda923ff4db69dbe3346d4b6719b83
-  branch: master
-  specs:
-    compass-rails (2.0.4)
-      compass (~> 1.0.0)
-      sass-rails (< 5.1)
-      sprockets (< 2.13)
-
-GIT
   remote: https://github.com/openteam-tusur/auth_client
   revision: b2aed658ecdbf2c3ba18da0ee857233cbbb36cdf
   specs:
@@ -116,6 +106,10 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
+    compass-rails (2.0.4)
+      compass (~> 1.0.0)
+      sass-rails (<= 5.0.1)
+      sprockets (< 2.13)
     configliere (0.4.22)
       highline (= 1.5.2)
       multi_json (~> 1.10.1)
@@ -290,7 +284,7 @@ DEPENDENCIES
   capistrano (~> 3.2.1)
   capistrano-bundler (= 1.1.2)
   coffee-rails (~> 4.1.0)
-  compass-rails!
+  compass-rails (~> 2.0.4)
   gravtastic
   hirb
   jquery-rails
