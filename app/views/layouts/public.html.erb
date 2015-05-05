@@ -3,12 +3,11 @@
   <head>
     <meta charset='UTF-8'>
     <title><%= I18n.t('app.title') %></title>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'public/application', media: 'all' %>
+    <%= javascript_include_tag 'public/application' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'navigation'  %>
     <%= yield %>
   </body>
 </html>
