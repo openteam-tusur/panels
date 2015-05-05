@@ -1,3 +1,23 @@
 app:
-  secret:           SECRET
-  secret_key_base:  SECRET
+  name:             'appname'
+  domain:           '.domain'
+  secret:           'SECRET'
+  secret_key_base:  'SECRET'
+
+profile:
+  url:              'http://localhost'
+  sign_in_url:      'http://localhost/users/sign_in'
+  sign_out_url:     'http://localhost/users/sign_out'
+  users_url:        'http://localhost/users/search'
+
+redis:
+  url:              'redis://localhost:6379/1'
+
+redis_user_connector:
+  url:              'redis://localhost:6379/3'
+
+session_store:
+  db:               4
+  key_prefix:       'session:'
+  host:             'localhost'
+  port:             6379
