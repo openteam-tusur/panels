@@ -19,7 +19,7 @@
       error: (jqXHR, textStatus, errorThrown) ->
         $('.data').fadeOut ->
           $('body').addClass('error')
-          $('.data').html('<p>Сервис временно недоступен</p>').hide().fadeIn()
+          $('.data').html('<h1>Сервис временно недоступен</h1>').hide().fadeIn()
         timeout = 350
         init_progressbar(timeout * 1000)
         timier = setTimeout update_panel, timeout * 1000
