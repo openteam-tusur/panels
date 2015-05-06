@@ -1,0 +1,10 @@
+<h1>Панели:</h1>
+<%= link_to "Добавить панель", new_manage_panel_path %> 
+
+<ul>
+<% @panels.each do |p| %>
+  <li><%= p.title %></li>
+  <%= link_to "Редактировать", edit_manage_panel_path(p.id)  %>
+  <%= link_to "Удалить", manage_panel_path(p.id), :method => :delete %>
+<% end %>
+</ul>
