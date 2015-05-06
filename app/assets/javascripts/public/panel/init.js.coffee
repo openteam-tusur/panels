@@ -18,14 +18,12 @@
       data: { current: slide }
       error: (jqXHR, textStatus, errorThrown) ->
         $('.data').fadeOut ->
-          $('body').addClass('error')
-          $('.data').html('<h1>Сервис временно недоступен</h1>').hide().fadeIn()
+          $('.data').addClass('error').html('<div class=\'table-cell\'><h1>Сервис временно недоступен</h1></div>').hide().fadeIn()
         timeout = 350
         init_progressbar(timeout * 1000)
         timier = setTimeout update_panel, timeout * 1000
         return
       success: (data, textStatus, jqXHR) ->
-        $('body').removeClass('error')
         response = $('<div />').html(data)
         slide = $('.data', response).data('id')
         timeout = $('.data', response).data('timeout')

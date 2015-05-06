@@ -56,7 +56,7 @@ class PanelsController < ApplicationController
   def show
     params_check
     @next_slide = (@next_slide || next_slide)
-    raise 'EGOR' if @next_slide == '3' # TODO remove this stub when need
+    raise 'SIMULATE ERROR' if @next_slide == '3' # TODO remove this stub when need
     @content = content_base[params[:id]][@next_slide]
     @content[:data_id] = @next_slide
     render :layout => request.xhr? ? false : 'public'
