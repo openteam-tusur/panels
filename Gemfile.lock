@@ -315,7 +315,6 @@ DEPENDENCIES
   non-stupid-digest-assets
   openteam-capistrano (~> 1.0.9)
   openteam-commons
-  paperclip (~> 4.2)
   paperclip-elvfs
   pg
   rails (~> 4.2.1)

@@ -6,12 +6,10 @@ group :default do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'compass-rails', '~> 2.0.4'
   gem 'gravtastic'
-  gem 'paperclip-elvfs'
-  gem 'video_info'
   gem 'jquery-rails'
   gem 'non-stupid-digest-assets'
   gem 'openteam-commons'
-  gem "paperclip", "~> 4.2"
+  gem 'paperclip-elvfs'
   gem 'pg'
   gem 'rails', '~> 4.2.1'
   gem 'redis-session-store'
@@ -21,6 +19,7 @@ group :default do
   gem 'simple_form'
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
+  gem 'video_info'
 end
 
 group :development do

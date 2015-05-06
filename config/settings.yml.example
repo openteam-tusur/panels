@@ -21,3 +21,6 @@ session_store:
   key_prefix:       'session:'
   host:             'localhost'
   port:             6379
+
+storage:
+  url:              'http://storage.url
