@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :panels, :only => :show
+  resources :panels, :only => [:index, :show]
 
   namespace :manage do
     resources :entries, :only => [:index, :destroy]
@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :texts, :only => [:new, :create, :edit, :update]
   end
 
-  root 'application#index'
+  root 'panels#index'
 
 end

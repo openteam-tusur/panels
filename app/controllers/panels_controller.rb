@@ -1,7 +1,5 @@
 class PanelsController < ApplicationController
 
-  layout 'public'
-
   def content_base
     @content_base = {
       '1' => {
@@ -61,7 +59,7 @@ class PanelsController < ApplicationController
     raise 'EGOR' if @next_slide == '3' # TODO remove this stub when need
     @content = content_base[params[:id]][@next_slide]
     @content[:data_id] = @next_slide
-    render :layout => false if request.xhr?
+    render :layout => request.xhr? ? false : 'public'
   end
 
   def next_slide

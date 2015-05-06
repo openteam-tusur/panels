@@ -1,0 +1,46 @@
+.panels
+
+  a
+    color: #dfdfdf
+    display: block
+    text-align: center
+    background-position: center center
+    background-repeat: no-repeat
+    background-color: transparent
+
+    &:hover
+      color: #fff
+      text-decoration: none
+
+    @media (max-width: $screen-xs-max)
+
+      font-size: 14px
+      width: 178px
+      height: 123px
+      background-image: image_url('panel-xs.jpg')
+      margin: 0 auto 20px
+      padding: 45px 20px 25px 20px
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+
+      font-size: 16px
+      width: 220px
+      height: 152px
+      background-image: image_url('panel-sm.jpg')
+      padding: 55px 20px 25px 20px
+
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+
+      font-size: 18px
+      width: 293px
+      height: 202px
+      background-image: image_url('panel-md.jpg')
+      padding: 75px 20px 25px 20px
+
+    @media (min-width: $screen-lg-min)
+
+      font-size: 20px
+      width: 360px
+      height: 248px
+      background-image: image_url('panel-lg.jpg')
+      padding: 95px 20px 25px 20px
