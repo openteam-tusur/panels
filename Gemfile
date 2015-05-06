@@ -6,9 +6,12 @@ group :default do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'compass-rails', '~> 2.0.4'
   gem 'gravtastic'
+  gem 'paperclip-elvfs'
+  gem 'video_info'
   gem 'jquery-rails'
   gem 'non-stupid-digest-assets'
   gem 'openteam-commons'
+  gem "paperclip", "~> 4.2"
   gem 'pg'
   gem 'rails', '~> 4.2.1'
   gem 'redis-session-store'
@@ -21,10 +24,11 @@ group :default do
 end
 
 group :development do
-  gem 'capistrano',                 '~> 3.2.1'
-  gem 'capistrano-bundler',         '= 1.1.2'
+  gem 'annotate', :require => false
+  gem 'capistrano', '~> 3.2.1', :require => false
+  gem 'capistrano-bundler', '= 1.1.2', :require => false
   gem 'hirb'
-  gem 'openteam-capistrano',        '~> 1.0.9'
+  gem 'openteam-capistrano', '~> 1.0.9'
 end
 
 group :test do

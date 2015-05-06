@@ -55,9 +55,13 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     airbrake (3.1.17)
       builder
       multi_json
+    annotate (2.6.8)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (6.0.0)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
@@ -86,6 +90,10 @@ GEM
       timers (~> 4.0.0)
     chronic (0.10.2)
     chunky_png (1.3.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -114,6 +122,7 @@ GEM
       highline (= 1.5.2)
       multi_json (~> 1.10.1)
     connection_pool (2.2.0)
+    curb (0.8.6)
     daemons (1.2.2)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
@@ -128,6 +137,7 @@ GEM
     hirb (0.7.3)
     hiredis (0.6.0)
     hitimes (1.2.2)
+    htmlentities (4.3.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -166,6 +176,14 @@ GEM
       rails
       unicorn
       whenever
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+    paperclip-elvfs (0.0.5.2)
+      curb
+      paperclip
     pg (0.18.1)
     rack (1.6.0)
     rack-test (0.6.3)
@@ -273,6 +291,10 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    video_info (2.4.2)
+      addressable
+      htmlentities
+      multi_json
     whenever (0.9.4)
       chronic (>= 0.6.3)
 
@@ -280,6 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   auth_client!
   auth_redis_user_connector!
   capistrano (~> 3.2.1)
@@ -292,6 +315,8 @@ DEPENDENCIES
   non-stupid-digest-assets
   openteam-capistrano (~> 1.0.9)
   openteam-commons
+  paperclip (~> 4.2)
+  paperclip-elvfs
   pg
   rails (~> 4.2.1)
   redis-session-store
@@ -302,3 +327,4 @@ DEPENDENCIES
   sqlite3
   tusur_header
   uglifier (>= 1.3.0)
+  video_info

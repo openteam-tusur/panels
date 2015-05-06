@@ -1,0 +1,17 @@
+<%= link_to 'Добавить фото', new_manage_photo_path %>
+<%= link_to 'Добавить текст', new_manage_text_path %>
+<%= link_to 'Добавить видео', new_manage_video_path %>
+
+<ul>
+  <% @entries.all.each do |entry| %>
+    <li>
+      <b><%= entry.type.capitalize %>:</b>
+      <br/>
+      <%= entry.title  %>
+      <%= render entry %>
+      <%= link_to 'Редактировать запись', [:edit, :manage, entry] %>
+      <%= link_to 'Удалить запись', manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete %>
+      <hr>
+    </li>
+  <% end %>
+</ul>
