@@ -7,6 +7,7 @@ group :default do
   gem 'compass-rails', '~> 2.0.4'
   gem 'gravtastic'
   gem 'jquery-rails'
+  gem 'non-stupid-digest-assets'
   gem 'openteam-commons'
   gem 'pg'
   gem 'rails', '~> 4.2.1'
