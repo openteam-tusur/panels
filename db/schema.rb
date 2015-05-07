@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507025202) do
+ActiveRecord::Schema.define(version: 20150507060305) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
     t.string   "title"
@@ -33,6 +36,17 @@ ActiveRecord::Schema.define(version: 20150507025202) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "context_id"
+    t.string   "context_type"
+    t.string   "role"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "permissions", ["user_id", "role", "context_id", "context_type"], name: "by_user_and_role_and_context", unique: true, using: :btree
+
   create_table "slides", force: :cascade do |t|
     t.integer  "panel_id"
     t.integer  "entry_id"
@@ -44,7 +58,9 @@ ActiveRecord::Schema.define(version: 20150507025202) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "slides", ["entry_id"], name: "index_slides_on_entry_id"
-  add_index "slides", ["panel_id"], name: "index_slides_on_panel_id"
+  add_index "slides", ["entry_id"], name: "index_slides_on_entry_id", using: :btree
+  add_index "slides", ["panel_id"], name: "index_slides_on_panel_id", using: :btree
 
+  add_foreign_key "slides", "entries"
+  add_foreign_key "slides", "panels"
 end
