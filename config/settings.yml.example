@@ -4,11 +4,18 @@ app:
   secret:           'SECRET'
   secret_key_base:  'SECRET'
 
+errors:
+  url:              'http://errors.url'
+  key:              'KEY'
+
 profile:
   url:              'http://localhost'
   sign_in_url:      'http://localhost/users/sign_in'
   sign_out_url:     'http://localhost/users/sign_out'
   users_url:        'http://localhost/users/search'
+
+storage:
+  url:              'http://storage.url'
 
 redis:
   url:              'redis://localhost:6379/1'
@@ -21,6 +28,3 @@ session_store:
   key_prefix:       'session:'
   host:             'localhost'
   port:             6379
-
-storage:
-  url:              'http://storage.url

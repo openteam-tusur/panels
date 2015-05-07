@@ -27,6 +27,7 @@ end
 group :development do
   gem 'annotate', :require => false
   gem 'capistrano', '~> 3.2.1', :require => false
+  gem 'capistrano-auth-subscriber'
   gem 'capistrano-bundler', '= 1.1.2', :require => false
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.9'
