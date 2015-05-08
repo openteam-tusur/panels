@@ -1,6 +1,7 @@
 app:
   name:             'appname'
   domain:           '.domain'
+  url:              'http://localhost'
   secret:           'SECRET'
   secret_key_base:  'SECRET'
 
