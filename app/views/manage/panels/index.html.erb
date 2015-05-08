@@ -1,11 +1,34 @@
-<h1>Панели:</h1>
-<%= link_to "Добавить панель", new_manage_panel_path %> 
+<div class='row'>
+  <div class='col-xs-12'>
+    <h1>Панели:</h1>
 
-<ul>
-<% @panels.each do |p| %>
-  <li><%= p.title %></li>
-  <%= link_to "Просмотреть панель", manage_panel_path(p.id)  %>
-  <%= link_to "Редактировать", edit_manage_panel_path(p.id)  %>
-  <%= link_to "Удалить", manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete %>
-<% end %>
-</ul>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= link_to "Добавить панель", new_manage_panel_path,  :class => 'btn btn-sm btn-primary'  %>
+  </div>
+</div>
+
+<div class='table-responsive'>
+  <table class='table table-hover'>
+    <tr>
+      <th> Название панели </th>
+      <th> Управление </th>
+    </tr>
+    
+    <% @panels.each do |p| %>
+    <tr>
+      <td><%= p.title %></td>
+      <td>
+        <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, manage_panel_path(p.id), title: 'Просмотреть панель', class: 'btn btn-small' %>
+        <%= link_to "<span class='glyphicon glyphicon-th-list'></span>".html_safe, manage_panel_slides_path(p.id), title: 'Сетка вещания', class: 'btn btn-small' %>
+        <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_path(p.id), title: 'Редактировать',  class: 'btn btn-small'  %>
+        <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete , title: 'Удалить', class: 'btn btn-small'%>
+      </td>
+    </tr>
+    
+    <% end %>
+  </table>
+</div>

@@ -1,7 +1,11 @@
-<%= simple_form_for  [:manage, @panel, @slide ] do |f|  %>
-  <%= f.association :entry, :collection => @entries_collection %>
-  <%= f.input :starts_at, :as => :datetime %>
-  <%= f.input :ends_at, :as => :datetime %>
-  <%= f.input :duration %>
-  <%= f.button :submit  %>
-<% end %>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= simple_form_for  [:manage, @panel, @slide ] do |f|  %>
+      <%= f.association :entry, :collection => @entries_collection %>
+      <%= f.input :starts_at, :as => :datetime %>
+      <%= f.input :ends_at, :as => :datetime %>
+      <%= f.input :duration %>
+      <%= f.button :submit  %>
+    <% end %>
+  </div>  
+</div>

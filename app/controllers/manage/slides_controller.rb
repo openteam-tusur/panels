@@ -1,25 +1,18 @@
 class Manage::SlidesController < Manage::ApplicationController
+  before_filter :get_panel
+  before_filter :get_entries, :only => [:new, :create, :edit, :update]
 
   def index
-    if @panel = Panel.find_by(id: params[:panel_id])
-        @slides = @panel.slides.order('panel_id')
-    else
-      redirect_to manage_panels_path
-      flash[:warning] = "Панель с id #{params[:panel_id]} не найдена"
-    end
+    @slides = @panel.slides.order('panel_id')
   end
 
   def new
     @slide = Slide.new
-    @panel = Panel.find_by(id: params[:panel_id])
-    @entries_collection = Entry.all - @panel.entries
   end
 
   def create
-    @slide = Slide.new(slide_params)
-    @panel = Panel.find_by(id: params[:panel_id])
+    @slide = @panel.slides.new(slide_params)
     @slide.position = @panel.slides.count + 1
-    @slide.panel = @panel
     if @slide.save
       redirect_to manage_panel_slides_path(@panel.id)
       flash[:success] = 'Слайд успешно создан'
@@ -30,13 +23,11 @@ class Manage::SlidesController < Manage::ApplicationController
 
   def edit
     @slide = Slide.find_by(id: params[:id])
-    @panel = Panel.find_by(id: params[:panel_id])
     @entries_collection = (Entry.all - @panel.entries ) << @slide.entry
   end
 
   def update
     @slide = Slide.find_by(id: params[:id])
-    @panel = Panel.find_by(id: params[:panel_id])
     if  @slide.update_attributes(slide_params) && @slide.valid?
       @slide.save
       redirect_to manage_panel_slides_path(@panel.id)
@@ -57,6 +48,14 @@ class Manage::SlidesController < Manage::ApplicationController
   private
     def slide_params
       params.require(:slide).permit(:entry_id, :starts_at, :ends_at, :duration, :position, :panel_id )
+    end
+
+    def get_panel
+      @panel = Panel.find(params[:panel_id])
+    end
+
+    def get_entries
+      @entries_collection = Entry.joins('left outer join slides on slides.entry_id = entries.id').where('slides.id is null or slides.panel_id != ?', @panel.id).uniq
     end
 
 end

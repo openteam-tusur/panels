@@ -1,6 +1,10 @@
-<%= simple_form_for [:manage, @video] do |f|  %>
-  <%= f.input :title %>
-  <%= f.input :video %>
-  <%= f.button :submit  %>
-  <%= link_to 'Cancel', manage_entries_path %>
-<% end %>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= simple_form_for [:manage, @video] do |f|  %>
+      <%= f.input :title %>
+      <%= f.input :video %>
+      <%= f.button :submit  %>
+      <%= link_to 'Cancel', manage_entries_path %>
+    <% end %>
+  </div>
+</div>

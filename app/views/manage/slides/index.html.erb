@@ -1,5 +1,5 @@
 <h1><%= @panel.title %> - сетка вещания</h1>
-<%= link_to 'Добавить слайд', new_manage_panel_slide_path(@panel.id) %>
+<%= link_to 'Добавить слайд', new_manage_panel_slide_path(@panel.id), :class => 'btn btn-primary btn-sm' %>
 <% if @panel.slides.any? %>
   <div class='table-responsive'>
     <table class='table  table-hover'>
@@ -18,7 +18,7 @@
         <tr>
           <td>
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать' %>
-            <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete %>
+            <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete %>
           </td>
           <td><%= s.id %></td>
           <td><%= s.panel.id %></td>

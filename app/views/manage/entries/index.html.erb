@@ -1,17 +1,36 @@
-<%= link_to 'Добавить фото', new_manage_photo_path %>
-<%= link_to 'Добавить текст', new_manage_text_path %>
-<%= link_to 'Добавить видео', new_manage_video_path %>
+<div class="row">
+  <div class='col-xs-12'>
+    <h1>Записи</h1>
+  </div>
+</div>
 
-<ul>
-  <% @entries.all.each do |entry| %>
-    <li>
-      <b><%= entry.type.capitalize %>:</b>
-      <br/>
-      <%= entry.title  %>
-      <%= render entry %>
-      <%= link_to 'Редактировать запись', [:edit, :manage, entry] %>
-      <%= link_to 'Удалить запись', manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete %>
-      <hr>
-    </li>
-  <% end %>
-</ul>
+<div class='row'>
+  <div class='col-12-xs'>
+      <p>
+        <%= link_to 'Добавить фото', new_manage_photo_path, class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Добавить текст', new_manage_text_path, class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Добавить видео', new_manage_video_path, class: 'btn btn-primary btn-sm' %>
+      </p>
+  </div>
+</div>
+
+<div class='table-responsive'>
+  <table class='table table-hover'>
+    <tr>
+      <th>Тип записи</th>
+      <th>Название записи</th>
+      <th>Содержимое записи</th>
+      <th>Управление</th>    
+    </tr>
+
+    <% @entries.all.each do |entry| %>
+      <tr>
+        <td><b><%= entry.type %> </b></td>
+        <td><%= entry.title  %></td>
+        <td><%= render entry %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, [:edit, :manage, entry], title: 'Редактировать' %>
+        <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete , title: 'Удалить'%></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

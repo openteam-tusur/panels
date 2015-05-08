@@ -1,4 +1,8 @@
-<%= simple_form_for [:manage, @panel] do |f|  %>
-  <%= f.input :title %>
-  <%= f.button :submit  %>
-<% end %>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= simple_form_for [:manage, @panel] do |f|  %>
+      <%= f.input :title %>
+      <%= f.button :submit  %>
+    <% end %>
+  </div>
+</div>

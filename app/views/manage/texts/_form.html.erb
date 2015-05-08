@@ -1,5 +1,9 @@
-<%= simple_form_for [:manage, @text] do |f|  %>
-  <%= f.input :title %>
-  <%= f.input :text %>
-  <%= f.button :submit  %>
-<% end %>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= simple_form_for [:manage, @text] do |f|  %>
+      <%= f.input :title %>
+      <%= f.input :text %>
+      <%= f.button :submit  %>
+    <% end %>
+  </div>
+</div>
