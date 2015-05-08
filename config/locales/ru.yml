@@ -1,3 +1,13 @@
 ru:
   app:
-    title: АИС «Объявления»
+    title: 'АИС «Объявления»'
+
+  page_title:
+
+    application:
+
+      index: 'Панели'
+
+  access:
+    not_authorized: 'Вы не вошли в систему'
+    denied: 'Доступ запрещён'

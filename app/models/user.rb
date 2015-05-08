@@ -5,4 +5,10 @@ class User
   def app_name
     Settings['app.name'].to_s.parameterize('_')
   end
+
+  Permission.available_roles.push('manager').uniq.each do |role|
+    define_method "#{role}?" do
+      has_permission? role: role
+    end
+  end
 end

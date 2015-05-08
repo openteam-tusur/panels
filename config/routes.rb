@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :videos, :only => [:new, :create, :edit, :update]
     resources :texts, :only => [:new, :create, :edit, :update]
     resources :panels
+    resources :permissions, :only => [:index, :new, :create, :destroy]
   end
 
   root 'panels#index'

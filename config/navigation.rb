@@ -2,10 +2,9 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.selected_class = 'active'
 
   navigation.items do |primary|
-    #primary.item :main_page,      I18n.t('page_title.application.index'), root_path
-    #if current_user && current_user.has_permission?(role: 'admin')
-      #primary.item :admin_dashboard, I18n.t('page_title.admin_dashboard.index'), rails_admin.dashboard_path
-    #end
+    primary.item :main_page, I18n.t('page_title.application.index'), root_path
+
+    primary.item :manage_entries, 'Объявления', manage_entries_path if can? :manage, Entry
   end
 end
 
