@@ -1,0 +1,7 @@
+<%= simple_form_for  [:manage, @panel, @slide ] do |f|  %>
+  <%= f.association :entry %>
+  <%= f.input :starts_at, :as => :datetime %>
+  <%= f.input :ends_at, :as => :datetime %>
+  <%= f.input :duration %>
+  <%= f.button :submit  %>
+<% end %>

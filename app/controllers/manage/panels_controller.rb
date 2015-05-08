@@ -4,6 +4,14 @@ class Manage::PanelsController < Manage::ApplicationController
     @panels = Panel.all.order('id desc')
   end
 
+  def show
+    if @panel = Panel.find_by(:id => params[:id])
+    else
+      redirect_to manage_panels_path
+      flash[:warning] = 'Не удалось найти панель с таким id'
+    end
+  end
+
   def new
     @panel = Panel.new
   end

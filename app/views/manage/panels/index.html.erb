@@ -4,6 +4,7 @@
 <ul>
 <% @panels.each do |p| %>
   <li><%= p.title %></li>
+  <%= link_to "Просмотреть панель", manage_panel_path(p.id)  %>
   <%= link_to "Редактировать", edit_manage_panel_path(p.id)  %>
   <%= link_to "Удалить", manage_panel_path(p.id), :method => :delete %>
 <% end %>

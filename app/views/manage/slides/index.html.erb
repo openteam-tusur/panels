@@ -1,0 +1,32 @@
+<h1><%= @panel.title %> - сетка вещания</h1>
+<%= link_to 'Добавить слайд', new_manage_panel_slide_path(@panel.id) %>
+<% if @panel.slides.any? %>
+  <div class='table-responsive'>
+    <table class='table  table-hover'>
+      <tr>
+        <td>Управление</td>
+        <td>#</td>
+        <td>Панель</td>
+        <td>Позиция</td>
+        <td>Начинается с</td>
+        <td>Заканчивается в</td>
+        <td>Продолжительность</td>
+        <td>Тип слайда</td>
+        <td>Содержимое</td>
+      </tr>
+      <% @slides.each do |s| %>
+        <tr>
+          <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать' %></td>
+          <td><%= s.id %></td>
+          <td><%= s.panel.id %></td>
+          <td><%= s.position %></td>
+          <td><%= s.starts_at %></td>
+          <td><%= s.ends_at %></td>
+          <td><%= s.duration %> с.</td>
+          <td><%= s.entry.type %></td>
+          <td><%= render s.entry %></td>
+        </tr>
+      <% end %>
+    </table>  
+  </div>
+<% end %>

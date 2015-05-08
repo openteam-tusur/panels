@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     resources :photos, :only => [:new, :create, :edit, :update]
     resources :videos, :only => [:new, :create, :edit, :update]
     resources :texts, :only => [:new, :create, :edit, :update]
-    resources :panels
     resources :permissions, :only => [:index, :new, :create, :destroy]
+    resources :panels do
+      resources :slides
+    end
   end
 
   root 'panels#index'
