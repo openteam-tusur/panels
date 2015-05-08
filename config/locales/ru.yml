@@ -11,3 +11,7 @@ ru:
   access:
     not_authorized: 'Вы не вошли в систему'
     denied: 'Доступ запрещён'
+
+  role_names:
+    admin: 'Администратор'
+    manager: 'Менеджер'

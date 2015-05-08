@@ -1,0 +1,23 @@
+<div class='row'>
+  <div class='col-xs-12'>
+    <h1>Добавление права доступа</h1>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= simple_form_for [:manage, @permission], :url => manage_permissions_path(@permission) do |f| %>
+
+      <%= f.input :name, :required => true, :autofocus => true,
+        :input_html => { :class => 'js-autocomplete', :data => { :url => search_users_path } },
+        :placeholder => 'Начните вводить ФИО' %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :class => 'js-autocomplete-target' } %>
+      <%= f.input :role, :collection => Permission.available_roles.map{ |role| [I18n.t("role_names.#{role}", :title => '').strip, role] } %>
+
+      <div class='actions'>
+        <%= f.submit 'Сохранить' %>
+        <%= link_to 'Отмена', manage_permissions_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, :only => [] do
+    get 'search', :on => :collection
+  end
+
   root 'panels#index'
 
 end
