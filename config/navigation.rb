@@ -4,7 +4,8 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :main_page, I18n.t('page_title.application.index'), root_path
 
-    primary.item :manage_entries, 'Объявления', manage_entries_path if can? :manage, Entry
+    primary.item :manage_panels, 'Управление панелями', manage_panels_path if can? :manage, Panel
+    primary.item :manage_entries, 'Управление объявлениями', manage_entries_path if can? :manage, Entry
   end
 end
 
