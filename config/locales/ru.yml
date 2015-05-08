@@ -15,3 +15,12 @@ ru:
   role_names:
     admin: 'Администратор'
     manager: 'Менеджер'
+
+  activerecord:
+    models:
+      permission: 'Права доступа'
+
+    attributes:
+      permission:
+        name: 'Ф.И.О.'
+        role: 'Роль'

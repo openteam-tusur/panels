@@ -6,16 +6,26 @@
 
 <div class='row'>
   <div class='col-xs-12'>
-    <p><%= link_to 'Добавить роль', new_manage_permission_path %></p>
+    <p><%= link_to 'Добавить роль', new_manage_permission_path, :class => 'btn btn-sm btn-primary' %></p>
   </div>
 </div>
 
 <div class='row'>
   <div class='col-xs-12'>
     <% if @permissions.any? %>
-      <ul class='list'>
-        <%= render @permissions %>
-      </ul>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Ф.И.О.</th>
+            <th>Роль</th>
+            <th>E-mail</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @permissions %>
+        </tbody>
+      </table>
     <% else %>
       <p>Информация отсутствует</p>
     <% end %>
