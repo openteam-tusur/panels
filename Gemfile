@@ -4,7 +4,7 @@ group :default do
   gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
   gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
   gem 'bootstrap-sass'
-  gem 'cancan'
+  gem 'cancancan'
   gem 'coffee-rails', '~> 4.1.0'
   gem 'compass-rails', '~> 2.0.4'
   gem 'gravtastic'
