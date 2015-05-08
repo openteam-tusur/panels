@@ -12,10 +12,10 @@ class Manage::SlidesController < Manage::ApplicationController
   def new
     @slide = Slide.new
     @panel = Panel.find_by(id: params[:panel_id])
+    @entries_collection = Entry.all - @panel.entries
   end
 
   def create
-    raise params[]
     @slide = Slide.new(slide_params)
     @panel = Panel.find_by(id: params[:panel_id])
     @slide.position = @panel.slides.count + 1
@@ -31,6 +31,7 @@ class Manage::SlidesController < Manage::ApplicationController
   def edit
     @slide = Slide.find_by(id: params[:id])
     @panel = Panel.find_by(id: params[:panel_id])
+    @entries_collection = (Entry.all - @panel.entries ) << @slide.entry
   end
 
   def update
@@ -42,6 +43,14 @@ class Manage::SlidesController < Manage::ApplicationController
       flash[:success] = 'Слайд успешно отредактирован'
     else
       render :action => :edit
+    end
+  end
+
+  def destroy
+    @slide = Slide.find_by(id: params[:id])
+    if @slide.destroy
+      redirect_to manage_panel_slides_path(Panel.find_by(id: params[:panel_id]))
+      flash[:success] = 'Слайд успешно удален'
     end
   end
 

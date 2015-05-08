@@ -1,7 +1,7 @@
 class Panel < ActiveRecord::Base
   has_many :slides
+  has_many :entries, :through => :slides
   validates_presence_of :title
-
 end
 
 # == Schema Information

@@ -1,7 +1,8 @@
 class Entry < ActiveRecord::Base
 
   validates_presence_of :title
-
+  has_many :slides
+  has_many :panels, :through => :slides
 end
 
 # == Schema Information

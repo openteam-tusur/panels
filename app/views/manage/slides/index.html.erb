@@ -16,7 +16,10 @@
       </tr>
       <% @slides.each do |s| %>
         <tr>
-          <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать' %></td>
+          <td>
+            <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать' %>
+            <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete %>
+          </td>
           <td><%= s.id %></td>
           <td><%= s.panel.id %></td>
           <td><%= s.position %></td>
@@ -27,6 +30,6 @@
           <td><%= render s.entry %></td>
         </tr>
       <% end %>
-    </table>  
+    </table>
   </div>
 <% end %>

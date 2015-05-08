@@ -6,6 +6,6 @@
   <li><%= p.title %></li>
   <%= link_to "Просмотреть панель", manage_panel_path(p.id)  %>
   <%= link_to "Редактировать", edit_manage_panel_path(p.id)  %>
-  <%= link_to "Удалить", manage_panel_path(p.id), :method => :delete %>
+  <%= link_to "Удалить", manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete %>
 <% end %>
 </ul>

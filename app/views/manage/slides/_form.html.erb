@@ -1,5 +1,5 @@
 <%= simple_form_for  [:manage, @panel, @slide ] do |f|  %>
-  <%= f.association :entry %>
+  <%= f.association :entry, :collection => @entries_collection %>
   <%= f.input :starts_at, :as => :datetime %>
   <%= f.input :ends_at, :as => :datetime %>
   <%= f.input :duration %>
