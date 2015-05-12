@@ -4,6 +4,7 @@
  * = require jquery_ujs
  * = require tusur_header
  * = require bootstrap
+ * = require esp-ckeditor
  * = require autocomplete
  * = require manage/update_slide_position
  * = require main

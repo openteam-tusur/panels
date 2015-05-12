@@ -27,6 +27,8 @@ group :default do
   gem 'uglifier', '>= 1.3.0'
   gem 'video_info'
   gem 'ranked-model'
+  gem 'esp-ckeditor'
+
 end
 
 group :development do

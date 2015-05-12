@@ -130,6 +130,7 @@ GEM
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    esp-ckeditor (0.1.6)
     execjs (2.5.2)
     ffi (1.9.8)
     font-awesome-sass (4.2.2)
@@ -327,6 +328,7 @@ DEPENDENCIES
   capistrano-bundler (= 1.1.2)
   coffee-rails (~> 4.1.0)
   compass-rails (~> 2.0.4)
+  esp-ckeditor
   font-awesome-sass
   gravtastic
   hirb
