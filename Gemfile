@@ -26,6 +26,7 @@ group :default do
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
   gem 'video_info'
+  gem 'ranked-model'
 end
 
 group :development do

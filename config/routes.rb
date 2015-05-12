@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :texts, :only => [:new, :create, :edit, :update]
     resources :permissions, :only => [:index, :new, :create, :destroy]
     resources :panels do
-      resources :slides
+      resources :slides do
+        post :update_position, :on => :collection
+      end
     end
   end
 

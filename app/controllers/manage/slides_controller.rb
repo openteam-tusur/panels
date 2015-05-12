@@ -3,7 +3,7 @@ class Manage::SlidesController < Manage::ApplicationController
   before_filter :get_entries, :only => [:new, :create, :edit, :update]
 
   def index
-    @slides = @panel.slides.order('panel_id')
+    @slides = @panel.slides.order('position')
   end
 
   def new
@@ -45,9 +45,17 @@ class Manage::SlidesController < Manage::ApplicationController
     end
   end
 
+  def update_position
+    @slide = Slide.find(slide_params[:slide_id])
+    @slide.position = slide_params[:position]
+    @slide.save
+
+    render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+  end
+
   private
     def slide_params
-      params.require(:slide).permit(:entry_id, :starts_at, :ends_at, :duration, :position, :panel_id )
+      params.require(:slide).permit(:entry_id, :starts_at, :ends_at, :duration, :position, :panel_id, :slide_id )
     end
 
     def get_panel
