@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507060305) do
+ActiveRecord::Schema.define(version: 20150513061248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 20150507060305) do
     t.integer  "panel_id"
     t.integer  "entry_id"
     t.integer  "duration"
-    t.time     "starts_at"
-    t.time     "ends_at"
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "starts_at"
+    t.datetime "ends_at"
   end
 
   add_index "slides", ["entry_id"], name: "index_slides_on_entry_id", using: :btree

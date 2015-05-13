@@ -1,3 +1,3 @@
-<div class='data' data-timeout='<%= @content[:timeout]%>' data-id='<%= @content[:data_id]%>'>
-  <%= @content[:text] %>
+<div class="data" data-timeout="<%= @slide.duration %>" data-id="<%= @slide.id %>" >
+  <%= render @slide.entry %>
 </div>

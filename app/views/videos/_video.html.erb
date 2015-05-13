@@ -1,0 +1,3 @@
+<%= @slide.entry.title %>
+<% video = VideoInfo.new(@slide.entry.video) %>
+<%= video.embed_code.html_safe %>
