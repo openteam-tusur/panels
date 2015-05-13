@@ -1,3 +1,18 @@
-<h1><%= @panel.title %></h1>
-<%= link_to 'Редактировать панель', edit_manage_panel_path(@panel.id) %>
-<%= link_to 'Сетка вещания панели', manage_panel_slides_path(@panel.id) %>
+<div class='pahe-header'>
+  <h1><%= @panel.title %></h1>
+</div>
+<div class='row'>
+  <div class='col-xs-4'>
+    <%= link_to 'Переименовать панель', edit_manage_panel_path(@panel.id), :class => 'btn btn-sm btn-primary'%>
+    <%= link_to 'Сетка вещания панели', manage_panel_slides_path(@panel.id), :class => 'btn btn-sm btn-primary' %>
+  </div>
+    <% if @panel.active? %>
+      <div class='col-xs-8 well well-lg'>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="<%= panel_path(@panel) %>" class='embed-responsive-item'></iframe>
+        </div>
+      </div>
+    <% else %>
+      <% flash.now[:warning] = "У панели нет ни одного активного слайда" %>
+    <% end %>
+</div>

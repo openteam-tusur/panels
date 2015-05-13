@@ -11,6 +11,11 @@ class Panel < ActiveRecord::Base
 
     slides[next_index]
   end
+
+  def active?
+    self.slides.available.any?
+  end
+
 end
 
 # == Schema Information
