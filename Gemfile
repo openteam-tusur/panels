@@ -7,6 +7,8 @@ group :default do
   gem 'cancancan'
   gem 'coffee-rails', '~> 4.1.0'
   gem 'compass-rails', '~> 2.0.4'
+  gem 'default_value_for'
+  gem 'esp-ckeditor'
   gem 'font-awesome-sass'
   gem 'gravtastic'
   gem 'jquery-rails'
@@ -18,6 +20,7 @@ group :default do
   gem 'paperclip-elvfs'
   gem 'pg'
   gem 'rails', '~> 4.2.1'
+  gem 'ranked-model'
   gem 'redis-session-store'
   gem 'russian'
   gem 'sass-rails', '5.0.0'
@@ -26,9 +29,6 @@ group :default do
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
   gem 'video_info'
-  gem 'ranked-model'
-  gem 'esp-ckeditor'
-
 end
 
 group :development do

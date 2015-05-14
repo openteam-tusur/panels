@@ -1,32 +1,35 @@
-<h1><%= @panel.title %> - сетка вещания</h1>
+<div class="row">
+  <div class='col-xs-12'>
+    <div class='page-header'>
+      <h1><%= @panel.title %> - сетка вещания</h1>
+    </div>
+  </div>
+</div>
+
 <%= link_to 'Добавить слайд', new_manage_panel_slide_path(@panel.id), :class => 'btn btn-primary btn-sm' %>
 <% if @panel.slides.any? %>
   <div class='table-responsive'>
     <table class='table  table-hover' id='sortable'>
       <thead>
-        <th>Управление</th>
-        <th>#</th>
-        <th>Панель</th>
         <th>Начинается с</th>
         <th>Заканчивается в</th>
         <th>Продолжительность</th>
         <th>Тип слайда</th>
         <th>Содержимое</th>
+        <th>Управление</th>
       </thead>
       <tbody>
         <% @slides.each do |s| %>
           <tr class='item' data-item-id=<%= "#{s.id}" %>>
-            <td>
-              <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать' %>
-              <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete %>
-            </td>
-            <td><%= s.id %></td>
-            <td><%= s.panel.id %></td>
-            <td><%= s.starts_at %></td>
-            <td><%= s.ends_at %></td>
+            <td><%= I18n.l(s.starts_at, :format => :long) %></td>
+            <td><%= I18n.l(s.ends_at, :format => :long) %></td>
             <td><%= s.duration %> с.</td>
-            <td><%= s.entry.type %></td>
+            <td><%= I18n.t("entry.type.#{s.entry.type}") %></td>
             <td><%= render s.entry %></td>
+            <td>
+              <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать', class: 'btn btn-primary btn-sm'  %>
+              <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete, class: 'btn btn-danger btn-sm' %>
+            </td>
           </tr>
         <% end %>
       </tbody>

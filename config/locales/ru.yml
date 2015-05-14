@@ -2,6 +2,12 @@ ru:
   app:
     title: 'АИС «Объявления»'
 
+  entry:
+    type:
+      Text: 'Текст'
+      Video: 'Видео'
+      Photo: 'Изображение'
+
   page_title:
 
     application:
@@ -19,8 +25,83 @@ ru:
   activerecord:
     models:
       permission: 'Права доступа'
+      panel: "панель"
+      entry: "объявление"
+      slide: "слайд"
+
 
     attributes:
       permission:
         name: 'Ф.И.О.'
         role: 'Роль'
+      panel:
+        title: 'Название панели'
+      slide:
+        entry: 'Объявление'
+        starts_at: 'Начало показа'
+        ends_at: 'Окончание показа'
+        duration: 'Продолжительность показа слайда в секундах'
+      photo:
+        title: "Подпись"
+        file: "Файл изображения"
+        choose_file: "Выбрать файл"
+      text:
+        title: "Заголовок"
+        text:  "Текст"
+      video:
+        title: "Название"
+        video: "Ссылка на видео"
+
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    - 
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    - 
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year

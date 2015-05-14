@@ -1,6 +1,8 @@
 <div class="row">
   <div class='col-xs-12'>
-    <h1>Записи</h1>
+    <div class='page-header'>
+      <h1>Объявления</h1>
+    </div>
   </div>
 </div>
 
@@ -16,20 +18,20 @@
 
 <div class='table-responsive'>
   <table class='table table-hover'>
-    <tr>
-      <th>Тип записи</th>
+    <thead>
+      <th>Тип</th>
       <th>Название записи</th>
       <th>Содержимое записи</th>
       <th>Управление</th>
-    </tr>
+    </thead>
 
     <% @entries.all.each do |entry| %>
       <tr>
-        <td><b><%= entry.type %> </b></td>
+        <td><%= I18n.t("entry.type.#{entry.type}")%></td>
         <td><%= entry.title  %></td>
         <td><%= render entry %></td>
-        <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, [:edit, :manage, entry], title: 'Редактировать' %>
-        <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete , title: 'Удалить'%></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, [:edit, :manage, entry], title: 'Редактировать', class: 'btn btn-primary btn-sm' %>
+        <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete , title: 'Удалить', class: 'btn btn-danger btn-sm'%></td>
       </tr>
     <% end %>
   </table>

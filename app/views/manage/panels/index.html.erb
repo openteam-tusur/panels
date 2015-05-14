@@ -1,6 +1,8 @@
 <div class='row'>
   <div class='col-xs-6'>
-    <h1>Панели:</h1>
+    <div class='page-header'>
+      <h1>Панели:</h1>
+    </div>
     <%= link_to "Добавить панель", new_manage_panel_path,  :class => 'btn btn-sm btn-primary'  %>
   </div>
 </div>
@@ -9,16 +11,23 @@
   <div class='col-xs-12'>
     <div class='table-responsive'>
       <table class='table table-hover'>
-        <tr>
-          <th> <b>Название панели</b> </th>
-          <th> <b>Управление</b> </th>
-        </tr>
+        <thead>
+          <th>Название панели</th>
+          <th>Управление</th>
+        </thead>
         <% @panels.each do |p| %>
           <tr>
-            <td><%= p.title %></td>
             <td>
-              <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, manage_panel_path(p.id), title: 'Просмотреть панель', class: 'btn btn-info' %>
+              <%= p.title %>
+              <% if !p.active? %>
+                <small>
+                  (Внимание! В панели нет активных слайдов.)
+                </small>
+              <% end %>
+            </td>
+            <td>
               <%= link_to "<span class='glyphicon glyphicon-th-list'></span>".html_safe, manage_panel_slides_path(p.id), title: 'Сетка вещания', class: 'btn btn-primary' %>
+              <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, manage_panel_path(p.id), title: 'Просмотреть панель', class: 'btn btn-info' %>
               <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_path(p.id), title: 'Редактировать',  class: 'btn btn-warning'  %>
               <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete , title: 'Удалить', class: 'btn btn-danger'%>
             </td>

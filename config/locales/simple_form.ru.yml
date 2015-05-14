@@ -1,0 +1,16 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'Необходимое поле'
+      mark: '*'
+    error_notification:
+      default_message: "Возникли следующие проблемы:"
+
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Сохранить %{model}"
+      cancel: "Отмена"
+
