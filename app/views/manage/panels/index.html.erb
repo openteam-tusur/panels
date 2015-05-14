@@ -6,7 +6,6 @@
     <%= link_to "Добавить панель", new_manage_panel_path,  :class => 'btn btn-sm btn-primary'  %>
   </div>
 </div>
-
 <div class='row'>
   <div class='col-xs-12'>
     <div class='table-responsive'>
@@ -26,9 +25,9 @@
               <% end %>
             </td>
             <td>
-              <%= link_to "<span class='glyphicon glyphicon-th-list'></span>".html_safe, manage_panel_slides_path(p.id), title: 'Сетка вещания', class: 'btn btn-primary' %>
-              <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_path(p.id), title: 'Редактировать',  class: 'btn btn-warning'  %>
-              <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete , title: 'Удалить', class: 'btn btn-danger'%>
+              <%= link_to "<span class='glyphicon glyphicon-th-list'></span>".html_safe, manage_panel_slides_path(p.id), title: 'Сетка вещания', class: 'btn btn-primary btn-sm' %>
+              <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_path(p.id), title: 'Редактировать',  class: 'btn btn-warning btn-sm'  %>
+              <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_path(p.id), :data => { confirm: 'Вы уверены, что хотите удалить панель?'}, :method => :delete , title: 'Удалить', class: 'btn btn-danger btn-sm'%>
             </td>
           </tr>
         <% end %>
