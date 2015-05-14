@@ -5,7 +5,7 @@
 </div>
 
 <div class='row'>
-  <div class='col-12-xs'>
+  <div class='col-xs-12'>
       <p>
         <%= link_to 'Добавить фото', new_manage_photo_path, class: 'btn btn-primary btn-sm' %>
         <%= link_to 'Добавить текст', new_manage_text_path, class: 'btn btn-primary btn-sm' %>
@@ -20,7 +20,7 @@
       <th>Тип записи</th>
       <th>Название записи</th>
       <th>Содержимое записи</th>
-      <th>Управление</th>    
+      <th>Управление</th>
     </tr>
 
     <% @entries.all.each do |entry| %>

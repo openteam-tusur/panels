@@ -242,6 +242,9 @@ CKEDITOR.config.height = 200;
  * @type String
  * @example
  */
+
+/**
+ *
 CKEDITOR.config.plugins =
   'about,' +
   'a11yhelp,' +
@@ -300,6 +303,7 @@ CKEDITOR.config.plugins =
   'undo,' +
   'wsc,' +
   'wysiwygarea';
+*/
 
 /**
  * A list of additional plugins to be loaded. This setting makes it easier
