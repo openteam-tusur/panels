@@ -7,6 +7,7 @@
   <% @panels.each do |p| %>
     <div class='col-sm-4 col-xs-12'>
       <%= link_to p.title, panel_path(p.id) %>
+      <%= "Внимание, на панели нет работающих слайдов" if !p.active?  %>
     </div>
   <% end %>
 </div>

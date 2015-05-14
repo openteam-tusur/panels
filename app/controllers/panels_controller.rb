@@ -1,7 +1,7 @@
 class PanelsController < ApplicationController
 
   def index
-    @panels = Panel.joins(:slides).uniq
+    @panels = Panel.all
   end
 
   def show
