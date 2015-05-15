@@ -23,7 +23,7 @@ class Manage::SlidesController < Manage::ApplicationController
 
   def edit
     @slide = Slide.find_by(id: params[:id])
-    @entries_collection = (Entry.all - @panel.entries ) << @slide.entry
+    @entries_collection << @slide.entry
   end
 
   def update
@@ -63,7 +63,8 @@ class Manage::SlidesController < Manage::ApplicationController
     end
 
     def get_entries
-      @entries_collection = Entry.joins('left outer join slides on slides.entry_id = entries.id').where('slides.id is null or slides.panel_id != ?', @panel.id).uniq
+     #@entries_collection = Entry.joins('left outer join slides on slides.entry_id = entries.id').where('slides.id is null or slides.panel_id != ?', @panel.id).uniq
+     @entries_collection = Entry.all - @panel.entries
     end
 
 end
