@@ -1,7 +1,7 @@
 class Entry < ActiveRecord::Base
 
   validates_presence_of :title
-  has_many :slides
+  has_many :slides, :dependent => :destroy
   has_many :panels, :through => :slides
 end
 

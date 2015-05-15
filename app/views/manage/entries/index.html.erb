@@ -28,9 +28,11 @@
     <% @entries.all.each do |entry| %>
       <tr>
         <td><%= I18n.t("entry.type.#{entry.type}")%></td>
-        <td><%= entry.title  %></td>
+        <td><%= link_to entry.title, manage_entry_path(entry)  %></td>
         <td><%= render entry %></td>
-        <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, [:edit, :manage, entry], title: 'Редактировать', class: 'btn btn-primary btn-sm' %>
+        <td>
+        <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, manage_entry_path(entry), title: 'Просмотреть', class: 'btn btn-primary btn-sm' %>
+        <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, [:edit, :manage, entry], title: 'Редактировать', class: 'btn btn-primary btn-sm' %>
         <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_entry_path(entry.id), :data => { confirm: 'Вы уверены, что хотите удалить запись?'}, :method => :delete , title: 'Удалить', class: 'btn btn-danger btn-sm'%></td>
       </tr>
     <% end %>

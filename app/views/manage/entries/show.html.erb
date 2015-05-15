@@ -1,0 +1,11 @@
+<h2>
+  <%= @entry.title %>
+</h2>
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= render "entry_#{@entry.type.downcase}" %>
+  </div>
+  <div class='col-xs-1'>
+    <%= link_to 'Назад',  manage_entries_path, class: 'btn btn-sm btn-primary' %>
+  </div>
+</div>

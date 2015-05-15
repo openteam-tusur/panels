@@ -6,12 +6,21 @@ class Manage::EntriesController < Manage::ApplicationController
 
   def destroy
     if Entry.find_by(:id => params[:id]).destroy
-      flash['success'] = 'Запись успешно удалена'
-      redirect_to manage_entries_path
+      redirect :success, 'Запись успешно удалена'
     else
-      flash['alert'] = 'запись с таким id не найдена'
-      redirect_to manage_entries_path
+      redirect :alert, 'Запись с таким id не найдена'
     end
   end
+
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
+  private
+
+    def redirect(status, message)
+      redirect_to manage_entries_path
+      flash[status] = message
+    end
 
 end
