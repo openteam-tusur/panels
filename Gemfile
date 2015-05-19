@@ -28,8 +28,9 @@ group :default do
   gem 'simple_form'
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
-  gem 'video_info'
   gem 'nested_form'
+  gem 'video_info', :git => 'git://github.com/thibaudgg/video_info.git'
+
 end
 
 group :development do
