@@ -3,11 +3,14 @@
     <h1>Список доступных расписаний вещания</h1>
   </div>
 </div>
-<div class='row panels'>
-  <% @panels.each do |p| %>
-    <div class='col-sm-4 col-xs-12'>
-      <%= link_to p.title, panel_path(p.id) %>
-      <%= "Внимание, на панели нет работающих слайдов" if !p.active?  %>
-    </div>
-  <% end %>
-</div>
+
+<% @panels.each_slice(3) do |row| %>
+  <div class='row panels'>
+    <% row.each do |p| %>
+      <div class='col-sm-4 col-xs-12'>
+        <%= link_to p.title, panel_path(p.id) %>
+        <%= "Внимание, на панели нет работающих слайдов" if !p.active?  %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
