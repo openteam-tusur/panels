@@ -3,6 +3,7 @@
  * = require jquery.ui.all
  * = require jquery_ujs
  * = require tusur_header
+ * = require jquery_nested_form
  * = require bootstrap
  * = require esp-ckeditor
  * = require autocomplete

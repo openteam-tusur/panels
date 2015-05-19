@@ -33,7 +33,7 @@ class Manage::PhotosController < Manage::ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:title, :file)
+      params.require(:photo).permit(:title, :file, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
     end
 
 end

@@ -33,7 +33,7 @@ class Manage::VideosController < Manage::ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :video)
+    params.require(:video).permit(:title, :video, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
   end
 
 end

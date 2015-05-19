@@ -33,6 +33,6 @@ class Manage::TextsController < Manage::ApplicationController
 
   private
     def text_params
-      params.require(:text).permit(:text, :title)
+      params.require(:text).permit(:text, :title, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
     end
 end

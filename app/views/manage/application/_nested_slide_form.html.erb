@@ -1,0 +1,8 @@
+<%= f.simple_fields_for :slides do |s| %>
+  <%= s.association :panel %>
+  <%= s.input :duration %>
+  <%= s.input :starts_at %>
+  <%= s.input :ends_at %>
+  <%= s.link_to_remove "Удалить слайд" %>
+<% end %>
+<%= f.link_to_add 'Добавить слайд', :slides %>

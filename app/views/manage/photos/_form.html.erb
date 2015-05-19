@@ -1,8 +1,9 @@
 <div class='row'>
   <div class='col-xs-6'>
-    <%= simple_form_for [:manage, @photo] do |f|  %>
+    <%= simple_nested_form_for [:manage, @photo] do |f|  %>
       <%= f.input :title %>
       <%= f.input :file %>
+      <%= render :partial => 'nested_slide_form', locals: { f: f } %>
       <%= f.button :submit  %>
     <% end %>
   </div>
