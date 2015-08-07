@@ -19,16 +19,18 @@
         <th>Управление</th>
       </thead>
       <tbody>
-        <% @slides.each do |s| %>
-          <tr class='item' data-item-id=<%= "#{s.id}" %>>
-            <td><%= I18n.l(s.starts_at, :format => :long) %></td>
-            <td><%= I18n.l(s.ends_at, :format => :long) %></td>
-            <td><%= s.duration %> с.</td>
-            <td><%= I18n.t("entry.type.#{s.entry.type}") %></td>
-            <td><%= render s.entry %></td>
+        <% @slides.each do |slide| %>
+          <tr class='item' data-item-id=<%= slide.id %>>
+            <td><%= slide.starts_at? ? I18n.l(slide.starts_at, :format => :long) : 'не указано' %></td>
+            <td><%= slide.ends_at? ? I18n.l(slide.ends_at, :format => :long) : 'не указано' %></td>
+            <td><%= slide.duration %> с.</td>
+            <td><%= I18n.t("entry.type.#{slide.entry.type}") %></td>
+            <td><%= render slide.entry %></td>
             <td>
-              <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_manage_panel_slide_path(s.panel.id, s.id), :title => 'Редактировать', class: 'btn btn-primary btn-sm'  %>
-              <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, manage_panel_slide_path(s.panel.id, s.id), :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete, class: 'btn btn-danger btn-sm' %>
+              <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-pencil'), edit_manage_panel_slide_path(slide.panel.id, slide.id),
+                :title => 'Редактировать', class: 'btn btn-primary btn-sm'  %>
+              <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-remove'), manage_panel_slide_path(slide.panel.id, slide.id),
+                :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete, class: 'btn btn-danger btn-sm' %>
             </td>
           </tr>
         <% end %>
