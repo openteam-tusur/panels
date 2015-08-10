@@ -9,6 +9,8 @@ jQuery ->
       axis: 'y'
       items: '.item'
       cursor: 'move'
+      handle: '.handler'
+      containment: '.parent'
 
       sort: (e, ui) ->
         ui.item.addClass('active-item-shadow')

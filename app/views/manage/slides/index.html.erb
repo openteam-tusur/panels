@@ -21,16 +21,19 @@
       <tbody>
         <% @slides.each do |slide| %>
           <tr class='item' data-item-id=<%= slide.id %>>
-            <td><%= slide.starts_at? ? I18n.l(slide.starts_at, :format => :long) : 'не указано' %></td>
-            <td><%= slide.ends_at? ? I18n.l(slide.ends_at, :format => :long) : 'не указано' %></td>
-            <td><%= slide.duration %> с.</td>
-            <td><%= I18n.t("entry.type.#{slide.entry.type}") %></td>
+            <td class='va-middle'><%= slide.starts_at? ? I18n.l(slide.starts_at, :format => :long) : 'не указано' %></td>
+            <td class='va-middle'><%= slide.ends_at? ? I18n.l(slide.ends_at, :format => :long) : 'не указано' %></td>
+            <td class='va-middle'><%= slide.duration %> с.</td>
+            <td class='va-middle'><%= I18n.t("entry.type.#{slide.entry.type}") %></td>
             <td><%= render slide.entry %></td>
-            <td>
+            <td class='va-middle'>
               <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-pencil'), edit_manage_panel_slide_path(slide.panel.id, slide.id),
                 :title => 'Редактировать', class: 'btn btn-primary btn-sm'  %>
               <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-remove'), manage_panel_slide_path(slide.panel.id, slide.id),
                 :title => 'Удалить',  :data => { confirm: 'Вы уверены, что хотите удалить слайд?'}, :method => :delete, class: 'btn btn-danger btn-sm' %>
+              <div class="handler btn btn-sm btn-success" title="Сортировать">
+                  <span class='glyphicon glyphicon-resize-vertical'></span>
+              </div>
             </td>
           </tr>
         <% end %>
