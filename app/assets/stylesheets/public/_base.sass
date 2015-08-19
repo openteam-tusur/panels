@@ -1,3 +1,6 @@
+$font-stack: OfficinaSerifBookSCC, sans-serif
+$firm-color: #335aa5
+
 html, body
   height: 100%
   margin: 0
@@ -7,6 +10,37 @@ body
   font-size: 1.5em
   font-family: Verdana, Tahoma, sans-serif
   overflow: hidden
+  
+  nav
+    height: 7%
+    background-color: $firm-color
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+
+    .image-container
+      height: 100%
+    .navbar-right
+      float: right
+    .brand-image
+      height: 75%
+      margin-bottom: 5px
+      margin-top: 5px
+      margin-left: 1em
+    .date-week-time
+      font-family: $font-stack
+      font-size: 1em
+      text-transform: uppercase
+      font-weight: 100
+      margin-top: 0.5em
+      color: white
+      margin-right: 1em
+
 
   h1
-    font-family: 'OfficinaSerifBookSCC', 'Arial', sans-serif
+    font-family: $font-stack
+  strong
+    font-family: $font-stack
+  .content-container
+    display: none
