@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get 'search', :on => :collection
   end
 
+  get '/time' => 'integration#time_and_week'
+
   root 'panels#index'
 
 end
