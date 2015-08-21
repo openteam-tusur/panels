@@ -1,8 +1,11 @@
 @init_panel = ->
-  VIDEO_PROPORTION = 1.7777777777777777 # this is 16 / 9
-  timeout = 0
-  #without it progressbar cannot get actual timeout
 
+  # important variables and constants initialization in main function body
+  VIDEO_PROPORTION = 1.7777777777777777 # this is just 16 / 9 
+  timeout = 0
+  slide = ''
+
+  #important functions declaration
   init_progressbar = (timeout) ->
     $('#progressbar').html('')
     line = new ProgressBar.Line '#progressbar',
@@ -30,7 +33,7 @@
       return
 
     onPlayerReady = (event) ->
-      margin()
+      margins_for_video()
       event.target.playVideo()
       return
 
@@ -62,23 +65,34 @@
         $('.data').fadeOut ->
           $('.data').replaceWith(response.html())
           $('.data').hide().fadeIn()
-          video_or_not()
-          onYouTubeIframeAPIReady() if $("#player")
+          detect_content_type()
+          onYouTubeIframeAPIReady() if $('#player').length
           return
         return
 
+  margins_for_video = ->
+    margin_left = ($(window).width() - $('.player').width())/2
+    $('.content-container').css('margin-left', "#{margin_left}px")
+
+    margin_top = ($('body').height() - $('nav').height() - $('.player').height())/3
+    $('.content-container').css('margin-top', "#{margin_top}px")
+    fade_in_content()
+
+  fade_in_content = -> $('.content-container').fadeIn(400)
+
   slide_start = ->
     init_progressbar(timeout * 1000)
-    timer = setTimeout update_panel, timeout * 1000  
+    timer = setTimeout update_panel, timeout * 1000
+    fade_in_content()
     return
 
-  video_or_not = ->
-    if $("#player")
+  detect_content_type = ->
+    if $("#player").length
       init_youtube()
     else
       slide_start()
 
-  player_sizes = -> 
+  player_sizes = ->
     height = $(window).height() - $('nav').height() - $('strong').height() - 100
     width = height * VIDEO_PROPORTION
     {
@@ -86,17 +100,10 @@
       width: width
     }
 
-  margin = ->
-    margin_left = ($(window).width() - $('.player').width())/2
-    $('.content-container').css('margin-left', "#{margin_left}px")
-
-    margin_top = ($('body').height() - $('nav').height() - $('.player').height())/3
-    $('.content-container').css('margin-top', "#{margin_top}px")
-
-    $('.content-container').fadeIn(400)
 
   url = window.location.href
   slide = $('.data').data('id')
   timeout = $('.data').data('timeout')
 
-  video_or_not()
+  #starting cycle of ajax remove-load-prepare functions
+  detect_content_type()

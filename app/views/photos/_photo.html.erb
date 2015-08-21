@@ -1,1 +1,7 @@
-<%= image_tag resized_image_url(@slide.entry.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n'}), :size => '1920x1080' %>
+<div class='flexbox-container'>
+  <div class='centered-item'>
+    <%= image_tag resized_image_url(@slide.entry.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n'}), class: 'photo' %>
+    <p class='photo-title'><%= @slide.entry.title %></p> 
+  </div>
+</div>
+
