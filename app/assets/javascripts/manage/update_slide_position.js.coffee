@@ -10,7 +10,7 @@ jQuery ->
       items: '.item'
       cursor: 'move'
       handle: '.handler'
-      containment: '.parent'
+      containment: 'table'
 
       sort: (e, ui) ->
         ui.item.addClass('active-item-shadow')
