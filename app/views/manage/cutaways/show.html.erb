@@ -1,0 +1,8 @@
+<div class='row'>
+  <div class='col-xs-6'>
+    <%= image_tag resized_image_url(@cutaway.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n'}), :size => '1500x1000' %>
+  </div>
+  <div class='col-xs-1'>
+    <%= link_to 'Назад',  manage_cutaways_path, class: 'btn btn-sm btn-primary' %>
+  </div>
+</div>

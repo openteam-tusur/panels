@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :manage do
     resources :entries, :only => [:index, :destroy, :show]
+    resources :cutaways
     resources :photos, :only => [:new, :create, :edit, :update]
     resources :videos, :only => [:new, :create, :edit, :update]
     resources :texts, :only => [:new, :create, :edit, :update]

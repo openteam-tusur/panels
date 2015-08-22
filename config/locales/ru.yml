@@ -4,9 +4,10 @@ ru:
 
   entry:
     type:
-      Text: 'Текст'
-      Video: 'Видео'
-      Photo: 'Изображение'
+      Text:    'Текст'
+      Video:   'Видео'
+      Photo:   'Изображение'
+      Cutaway: 'Перебивка'
 
   page_title:
 

@@ -1,7 +1,7 @@
 class Manage::EntriesController < Manage::ApplicationController
 
   def index
-    @entries = Entry.all.order('id desc')
+    @entries = Entry.all.where.not(:type => 'Cutaway').order('id desc')
   end
 
   def destroy

@@ -63,7 +63,7 @@ class Manage::SlidesController < Manage::ApplicationController
     end
 
     def get_entries
-     @entries_collection = Entry.all - @panel.entries
+      @entries_collection = Entry.where.not(type: 'Cutaway') - @panel.entries
     end
 
 end

@@ -3,7 +3,7 @@ class Photo < Entry
   has_attached_file :file, :storage => :elvfs, :elvfs_url => Settings['storage.url']
   validates_attachment_content_type :file, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  validates_presence_of :file
+  validates_presence_of :file, :title
 end
 
 # == Schema Information

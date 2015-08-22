@@ -4,6 +4,8 @@
   VIDEO_PROPORTION = 1.7777777777777777 # this is just 16 / 9 
   timeout = 0
   slide = ''
+  cutaway = ''
+  recent_played_entry = ''
 
   #important functions declaration
   init_progressbar = (timeout) ->
@@ -50,7 +52,11 @@
   update_panel = ->
     $.ajax
       url: url
-      data: { current: slide }
+      data: {
+        current_slide: slide
+        current_cutaway: cutaway
+        recent_played_entry: recent_played_entry
+      }
       error: (jqXHR, textStatus, errorThrown) ->
         $('.data').fadeOut ->
           $('.data').addClass('error').html('<div class=\'table-cell\'><h1>Сервис временно недоступен</h1></div>').hide().fadeIn()
@@ -60,11 +66,13 @@
         return
       success: (data, textStatus, jqXHR) ->
         response = $('<div />').html(data)
-        slide = $('.data', response).data('id')
         timeout = $('.data', response).data('timeout')
         $('.data').fadeOut ->
           $('.data').replaceWith(response.html())
           $('.data').hide().fadeIn()
+          entry = recent_played_entry()
+          slide = $('.data').data('id') if entry == 'entry'
+          cutaway = cutaway_updater() if $('#cutaway').length
           detect_content_type()
           onYouTubeIframeAPIReady() if $('#player').length
           return
@@ -99,6 +107,11 @@
       height: height
       width: width
     }
+
+  cutaway_updater = ->
+    $('#cutaway').data('id')
+
+  recent_played_entry = -> if $('#cutaway').length then 'cutaway' else 'entry'
 
 
   url = window.location.href

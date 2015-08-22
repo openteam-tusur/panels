@@ -8,8 +8,9 @@ class Slide < ActiveRecord::Base
 
   before_save :get_duration
 
-  validates_presence_of :panel_id, :entry_id, :duration, :starts_at, :ends_at
+  validates_presence_of :entry_id, :duration, :starts_at, :ends_at
   validate :times_compare
+  validates_presence_of :panel_id, unless: Proc.new { |a| a.entry.type == 'Cutaway' }
 
   scope :ordered, -> { order(:position) }
   scope :available, -> { where('starts_at < :now and ends_at > :now', { :now => Time.zone.now }).ordered }

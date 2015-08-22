@@ -1,6 +1,6 @@
 class Video < Entry
 
-  validates_presence_of :video
+  validates_presence_of :video, :title
 
   before_validation :available_video
 

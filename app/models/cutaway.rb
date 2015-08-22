@@ -1,15 +1,9 @@
-class Entry < ActiveRecord::Base
+class Cutaway < Entry
 
-  has_many :slides, :dependent => :destroy
-  has_many :panels, :through => :slides
+  has_attached_file :file, :storage => :elvfs, :elvfs_url => Settings['storage.url']
+  validates_attachment_content_type :file, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  accepts_nested_attributes_for :slides,  :allow_destroy => true, :reject_if => :slide_invalid?
-
-  private
-
-    def slide_invalid?(attributed)
-      Panel.find(attributed['panel_id']).slides.map(&:entry_id).include? self.id
-    end
+  validates_presence_of :file
 
 end
 
