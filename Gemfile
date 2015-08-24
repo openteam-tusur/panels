@@ -22,6 +22,7 @@ group :default do
   gem 'rails', '~> 4.2.1'
   gem 'ranked-model'
   gem 'redis-session-store'
+  gem 'rest-client'
   gem 'russian'
   gem 'sass-rails', '5.0.0'
   gem 'simple-navigation'
