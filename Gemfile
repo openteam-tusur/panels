@@ -14,6 +14,7 @@ group :default do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-ui-sass-rails'
+  gem 'nested_form'
   gem 'non-stupid-digest-assets'
   gem 'normalize-rails'
   gem 'openteam-commons'
@@ -29,9 +30,7 @@ group :default do
   gem 'simple_form'
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
-  gem 'nested_form'
   gem 'video_info', :git => 'git://github.com/thibaudgg/video_info.git'
-
 end
 
 group :development do
