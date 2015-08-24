@@ -1,7 +1,10 @@
-<div class='flexbox-container'>
-  <div class='centered-item'>
-    <%= image_tag resized_image_url(@slide.entry.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n'}), class: 'photo' %>
-    <p class='photo-title'><%= @slide.entry.title %></p> 
-  </div>
+<span id='hidden'>
+  <%= resized_image_url(@slide.entry.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n', magnify: 'm'}) %>
+</span>
+<div id='photo-container'>
 </div>
-
+<div class='title'>
+  <p>
+    <%= @slide.entry.title %> 
+  </p>
+</div>

@@ -1,6 +1,7 @@
-<% video = VideoInfo.new(@slide.entry.video) %>
-<div id="player" class='player' data-value="<%= video.video_id %>"></div>    
-<p>
-  <strong><%= @slide.entry.title %></strong>
+<div id='video-container'>
+  <% video = VideoInfo.new(@slide.entry.video) %>
+  <div id="player" class='player' data-value="<%= video.video_id %>"></div>    
+</div>
+<p class='title'>
+  <%= @slide.entry.title %>
 </p>
-

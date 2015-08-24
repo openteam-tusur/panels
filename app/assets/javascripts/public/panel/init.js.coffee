@@ -84,9 +84,15 @@
 
     margin_top = ($('body').height() - $('nav').height() - $('.player').height())/3
     $('.content-container').css('margin-top', "#{margin_top}px")
-    fade_in_content()
 
-  fade_in_content = -> $('.content-container').fadeIn(400)
+    $('.title').css('display', 'none').css('visibility', 'visible')
+    $('.title').css('width', $('.player').width()).css('margin-left', margin_left)
+
+    fade_in_content($('#video-container'))
+    fade_in_content($('.title'))
+
+  fade_in_content = (object) -> 
+    object.fadeIn(400)
 
   slide_start = ->
     init_progressbar(timeout * 1000)
@@ -94,25 +100,40 @@
     fade_in_content()
     return
 
+  content_height = ->
+    $(window).height() - $('nav').height() - $('.title').height() - $('.em').height() * 4
+
+  init_photo = ->
+    url = $('#hidden').text()
+    original_sizes = /\d+-\d+/.exec(url).join().split('-')
+    image_proportion = original_sizes[0]/original_sizes[1]
+    image_height = Math.floor(content_height())
+    image_width = Math.floor(image_height * image_proportion)
+    url = url.replace(/\d+-\d+/, "#{image_width}-#{image_height}")
+    img = $('<img>').attr('src', url).attr('class', 'photo')
+    img.appendTo('#photo-container')
+    fade_in_content($('#photo-container'))
+    $('.title').css('display', 'none').css('visibility', 'visible')
+    $('.title').css('width', image_width).css('margin-left', ($(window).width() - image_width)/2 ).fadeIn(400)
+    slide_start()
+
   detect_content_type = ->
     if $("#player").length
       init_youtube()
-    else
-      slide_start()
+    else if $('#photo-container').length || $('#cutaway').length
+      init_photo()
 
   player_sizes = ->
-    height = $(window).height() - $('nav').height() - $('strong').height() - 100
-    width = height * VIDEO_PROPORTION
+    height = Math.floor(content_height())
+    width = Math.floor(height * VIDEO_PROPORTION)
     {
       height: height
       width: width
     }
 
-  cutaway_updater = ->
-    $('#cutaway').data('id')
+  cutaway_updater = -> $('#cutaway').data('id')
 
   recent_played_entry = -> if $('#cutaway').length then 'cutaway' else 'entry'
-
 
   url = window.location.href
   slide = $('.data').data('id')

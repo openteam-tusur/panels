@@ -1,10 +1,10 @@
 @init_panel_time = ->
   update_time = ->
-    $('.date-week-time').fadeOut(400)
+    $('.date-week-time')
     get_time()
 
   show = (result)->
-    $('.date-week-time').text(result).fadeIn 1000
+    $('.date-week-time').text(result)
     timer = setTimeout(update_time, 20 * 1000)
 
   get_time = ->
