@@ -117,11 +117,18 @@
     $('.title').css('width', image_width).css('margin-left', ($(window).width() - image_width)/2 ).fadeIn(400)
     slide_start()
 
+  init_text = ->
+    $('.data').css('height', content_height())
+    fade_in_content($('.wrapper'))
+    slide_start()
+
   detect_content_type = ->
     if $("#player").length
       init_youtube()
     else if $('#photo-container').length || $('#cutaway').length
       init_photo()
+    else if $('.text-container').length
+      init_text()
 
   player_sizes = ->
     height = Math.floor(content_height())

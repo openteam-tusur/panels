@@ -1,2 +1,6 @@
-<%= @slide.entry.title %>
-<%= @slide.entry.text.html_safe %>
+<div class="text-container">
+  <div class='wrapper'>
+    <h3><%= @slide.entry.title %></h3>
+    <%= @slide.entry.text.html_safe %>    
+  </div>
+</div>
