@@ -1,6 +1,6 @@
 /* =
  * = require jquery
- * = require jquery.ui.all
+ * = require jquery-ui
  * = require jquery_ujs
  * = require tusur_header
  * = require jquery_nested_form

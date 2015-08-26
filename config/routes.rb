@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount ElVfsClient::Engine => '/'
+
   resources :panels, :only => [:index, :show]
 
   namespace :manage do
