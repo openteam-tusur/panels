@@ -6,9 +6,12 @@ html, body
   padding: 0
 
 body
-  font-size: 1.5em
   font-family: Verdana, Tahoma, sans-serif
   overflow: hidden
+
+  .block
+    display: block
+    width: 100%
 
   nav
     height: 50px
@@ -31,7 +34,7 @@ body
 
     .date-week-time
       font-family: $font-stack
-      font-size: 1em
+      font-size: 40px
       text-transform: uppercase
       font-weight: 100
       color: white
@@ -67,20 +70,95 @@ body
 
   .data
     height: 100%
+    display: block
+
     .text-container
       height: 100%
       width: 100%
-      display: flex
       flex-direction: column
       justify-content: center
       align-items: center
 
       .wrapper
         display: none
-        width: 70%
+        width: 100%
 
-        h1,h2,h3
-          margin-bottom: 1em
         p
           font-family: $font-stack
-          font-size: 12pt
+
+        .september
+          margin-top: 4em
+
+          h1,h2,h3,p
+            font-family: $font-stack
+          h1
+            font-size: 6em
+          p
+            font-size: 3em
+
+
+          .white
+            color: white
+
+          .warning
+            width: 60%
+            background-color: #ff6633
+            padding: 3em
+            float: right
+            position: relative
+            margin-right: 1em
+
+            h1
+              font-size: 6em
+
+            .triangle-left-top
+              position: absolute
+              top: 0
+              left: 0
+              border-top: 2em solid white
+              border-right: 2em solid #ff6633
+              width: 0
+
+            .triangle-right-top
+              position: absolute
+              top: -2em
+              right: 0
+              border-top: 2em solid white
+              border-right: 2em solid #ff6633
+              width: 0
+
+            .triangle-right-bottom
+              position: absolute
+              bottom: 0
+              right: 0
+              border-bottom: 2em solid white
+              border-left: 2em solid #ff6633
+              width: 0
+
+          .infos-wrapper
+            clear: both
+            width: 85%
+            margin: 0 auto
+            background-color: #f2f2f2
+            padding: 2em
+            padding-top: 8em
+            position: relative
+            top: -4em
+            z-index: -1
+
+            h1
+              font-size: 6em
+            p
+              font-size: 3em
+
+            .info-row
+              margin: 0.5em auto 0 auto
+              width: 100%
+              overflow: auto
+
+            .image-dummy
+              width: 350px
+              height: 350px
+              background-color: green
+              float: left
+              margin-right: 2em

@@ -1,5 +1,4 @@
 @init_panel = ->
-
   # important variables and constants initialization in main function body
   VIDEO_PROPORTION = 1.7777777777777777 # this is just 16 / 9
   timeout = 0
@@ -7,46 +6,14 @@
   cutaway = ''
   recent_played_entry = ''
 
-  #important functions declaration
+
+  #common functions declaration:
   init_progressbar = (timeout) ->
     $('#progressbar').html('')
     line = new ProgressBar.Line '#progressbar',
       color: '#ccc'
       duration: timeout
     line.animate(1)
-    return
-
-  init_youtube = ->
-    onYouTubeIframeAPIReady = ->
-      #new object for YouTubeIframeAPI
-      sizes = player_sizes()
-      player = new (YT.Player)('player',
-        videoId: $("#player").data('value')
-        width:  sizes.width
-        height: sizes.height
-        playerVars:
-          controls: 0 # hide control elements of player
-          rel:      0 # do not show related videos after clip end
-          showinfo: 0 # hide info shown before video started
-        events:
-          'onReady': onPlayerReady
-          'onStateChange': onPlayerStateChange
-       )
-      return
-
-    onPlayerReady = (event) ->
-      margins_for_video()
-      event.target.playVideo()
-      return
-
-    onPlayerStateChange = (event) ->
-      if event.data == YT.PlayerState.PLAYING
-        init_progressbar(timeout * 1000)
-      else if event.data == YT.PlayerState.ENDED
-        update_panel()
-      return
-
-    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady
     return
 
   update_panel = ->
@@ -78,31 +45,30 @@
           return
         return
 
-  margins_for_video = ->
-    margin_left = ($(window).width() - $('.player').width())/2
-    $('.content-container').css('margin-left', "#{margin_left}px")
-
-    margin_top = ($('body').height() - $('nav').height() - $('.player').height())/3
-    $('.content-container').css('margin-top', "#{margin_top}px")
-
-    $('.title').css('display', 'none').css('visibility', 'visible')
-    $('.title').css('width', $('.player').width()).css('margin-left', margin_left)
-
-    fade_in_content($('#video-container'))
-    fade_in_content($('.title'))
-
-  fade_in_content = (object) ->
-    object.fadeIn(400) if object
-
   slide_start = ->
     init_progressbar(timeout * 1000)
     timer = setTimeout update_panel, timeout * 1000
-    fade_in_content()
+    return
+
+  fade_in_content = (object) -> 
+    object.fadeIn(400)
     return
 
   content_height = ->
     $(window).height() - $('nav').height() - $('.title').height() - $('.em').height() * 4
 
+  detect_content_type = ->
+    if $("#player").length
+      init_youtube()
+    else if $('#photo-container').length || $('#cutaway').length
+      init_photo()
+    else if $('.text-container').length
+      init_text()
+
+
+
+  #content-specified functions declaration:
+  #for a photo and cutaway slides:
   init_photo = ->
     url = $('#hidden').text()
     original_sizes = /\d+-\d+/.exec(url).join().split('-')
@@ -117,18 +83,46 @@
     $('.title').css('width', image_width).css('margin-left', ($(window).width() - image_width)/2 ).fadeIn(400)
     slide_start()
 
+  #text functions:
   init_text = ->
     $('.data').css('height', content_height())
     fade_in_content($('.wrapper'))
     slide_start()
 
-  detect_content_type = ->
-    if $("#player").length
-      init_youtube()
-    else if $('#photo-container').length || $('#cutaway').length
-      init_photo()
-    else if $('.text-container').length
-      init_text()
+
+  #video functions
+  init_youtube = ->
+    onYouTubeIframeAPIReady = ->
+      #new object for YouTubeIframeAPI 
+      sizes = player_sizes()
+      player = new (YT.Player)('player',
+        videoId: $("#player").data('value')
+        width:  sizes.width
+        height: sizes.height
+        playerVars:
+          controls: 0 # hide control elements of player
+          rel:      0 # do not show related videos after clip end
+          showinfo: 0 # hide info shown before video started
+        events:
+          'onReady': onPlayerReady
+          'onStateChange': onPlayerStateChange
+       )
+      return
+
+    onPlayerReady = (event) ->
+      margins_for_video()
+      event.target.playVideo()
+      return
+
+    onPlayerStateChange = (event) ->
+      if event.data == YT.PlayerState.PLAYING
+        init_progressbar(timeout * 1000)
+      else if event.data == YT.PlayerState.ENDED
+        update_panel()
+      return
+
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady
+    return
 
   player_sizes = ->
     height = Math.floor(content_height())
@@ -138,13 +132,29 @@
       width: width
     }
 
+  margins_for_video = ->
+    margin_left = ($(window).width() - $('.player').width())/2
+    $('.content-container').css('margin-left', "#{margin_left}px")
+
+    margin_top = ($('body').height() - $('nav').height() - $('.player').height())/3
+    $('.content-container').css('margin-top', "#{margin_top}px")
+
+    $('.title').css('display', 'none').css('visibility', 'visible')
+    $('.title').css('width', $('.player').width()).css('margin-left', margin_left)
+
+    fade_in_content($('#video-container'))
+    fade_in_content($('.title'))
+
+
+  #functions for cutaway functional realisation
   cutaway_updater = -> $('#cutaway').data('id')
 
   recent_played_entry = -> if $('#cutaway').length then 'cutaway' else 'entry'
+
 
   url = window.location.href
   slide = $('.data').data('id')
   timeout = $('.data').data('timeout')
 
-  #starting cycle of ajax remove-load-prepare functions
+  #starting cycle of ajax remove-load-prepare-start functions
   detect_content_type()
