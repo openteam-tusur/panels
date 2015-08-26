@@ -1,7 +1,7 @@
 @init_panel = ->
 
   # important variables and constants initialization in main function body
-  VIDEO_PROPORTION = 1.7777777777777777 # this is just 16 / 9 
+  VIDEO_PROPORTION = 1.7777777777777777 # this is just 16 / 9
   timeout = 0
   slide = ''
   cutaway = ''
@@ -18,7 +18,7 @@
 
   init_youtube = ->
     onYouTubeIframeAPIReady = ->
-      #new object for YouTubeIframeAPI 
+      #new object for YouTubeIframeAPI
       sizes = player_sizes()
       player = new (YT.Player)('player',
         videoId: $("#player").data('value')
@@ -91,8 +91,8 @@
     fade_in_content($('#video-container'))
     fade_in_content($('.title'))
 
-  fade_in_content = (object) -> 
-    object.fadeIn(400)
+  fade_in_content = (object) ->
+    object.fadeIn(400) if object
 
   slide_start = ->
     init_progressbar(timeout * 1000)
@@ -109,9 +109,9 @@
     image_proportion = original_sizes[0]/original_sizes[1]
     image_height = Math.floor(content_height())
     image_width = Math.floor(image_height * image_proportion)
-    url = url.replace(/\d+-\d+/, "#{image_width}-#{image_height}")
-    img = $('<img>').attr('src', url).attr('class', 'photo')
-    img.appendTo('#photo-container')
+    url = url.replace(/\d+-\d+/, "#{image_width}-#{image_height}").compact()
+    img = $('<img>', { src: url}).attr('class', 'photo')
+    $('#photo-container').html(img)
     fade_in_content($('#photo-container'))
     $('.title').css('display', 'none').css('visibility', 'visible')
     $('.title').css('width', image_width).css('margin-left', ($(window).width() - image_width)/2 ).fadeIn(400)

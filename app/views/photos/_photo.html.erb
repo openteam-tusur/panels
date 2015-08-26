@@ -2,9 +2,10 @@
   <%= resized_image_url(@slide.entry.file.url, 1920, 1080, { :cropify => 'c', :gravity => 'n', magnify: 'm'}) %>
 </span>
 <div id='photo-container'>
+  <%= image_tag 'tusur.jpg', :height => '80%' %>
 </div>
 <div class='title'>
   <p>
-    <%= @slide.entry.title %> 
+    <%= @slide.entry.title %>
   </p>
 </div>
