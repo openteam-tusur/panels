@@ -1,11 +1,6 @@
 <div class="text-container">
   <div class='wrapper'>
-    <% if Rails.env.production? %>
-      <h3><%= @slide.entry.title %></h3>
-      <%= @slide.entry.text.html_safe %>
-    <% end %>
-    <% if Rails.env.development? %>
-      <%= render :partial => 'texts/september' %>
-    <% end %>
+    <%= @slide.entry.text.html_safe %>
+    <%#= render :partial => 'texts/september' %>
   </div>
 </div>

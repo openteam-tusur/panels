@@ -95,9 +95,9 @@ body
           h1,h2,h3,p
             font-family: $font-stack
           h1
-            font-size: 6em
+            font-size: 4em
           p
-            font-size: 3em
+            font-size: 2em
 
 
           .white
@@ -110,9 +110,7 @@ body
             float: right
             position: relative
             margin-right: 1em
-
-            h1
-              font-size: 6em
+            z-index: 1
 
             .triangle-left-top
               position: absolute
@@ -144,24 +142,23 @@ body
             margin: 0 auto
             background-color: #f2f2f2
             padding: 2em
-            padding-top: 8em
+            padding-top: 4em
             position: relative
             top: -4em
-            z-index: -1
 
             h1
-              font-size: 6em
+              margin: 0.8em 0 0.5em
+
             p
               font-size: 3em
 
             .info-row
+              +clearfix
               margin: 0.5em auto 0 auto
               width: 100%
-              overflow: auto
 
             .image-dummy
               width: 350px
               height: 350px
-              background-color: green
               float: left
               margin-right: 2em
