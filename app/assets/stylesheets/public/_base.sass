@@ -14,30 +14,25 @@ body
     width: 100%
 
   nav
-    height: 50px
+    height: 60px
+    line-height: 60px
     background-color: $firm-color
-    display: flex
-    align-items: center
-    justify-content: space-between
 
     .image-container
-      height: 100%
+      margin-left: 1em
+
+      img
+        margin-top: 5px
 
     .navbar-right
       float: right
 
-    .brand-image
-      height: 75%
-      margin-bottom: 5px
-      margin-top: 5px
-      margin-left: 1em
-
     .date-week-time
       font-family: $font-stack
       font-size: 40px
-      line-height: 50px
+      height: 60px
+      line-height: 60px
       text-transform: uppercase
-      font-weight: 100
       color: white
       margin-right: 0.5em
 
@@ -103,8 +98,11 @@ body
           .white
             color: white
 
+          p.white
+            font-family: Verdana, Tahoma, sans-serif
+
           .warning
-            width: 60%
+            width: 65%
             background-color: #ff6633
             padding: 3em
             float: right
@@ -122,7 +120,7 @@ body
 
             .triangle-right-top
               position: absolute
-              top: -2em
+              bottom: 100%
               right: 0
               border-top: 2em solid white
               border-right: 2em solid #ff6633
