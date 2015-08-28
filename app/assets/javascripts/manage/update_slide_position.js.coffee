@@ -1,4 +1,4 @@
-jQuery ->
+$ ->
   if $('#sortable').length > 0
     table_width = $('#sortable').width()
     cells = $('.table').find('tr')[0].cells.length
@@ -19,13 +19,14 @@ jQuery ->
         # highlight the row on drop to indicate an update
         ui.item.children('td').effect('highlight', {}, 1000)
       update: (e, ui) ->
-        item_id = ui.item.data('item-id')
-        console.log(item_id)
-        position = ui.item.index() # this will not work with paginated items, as the index is zero on every page
+        slides = {}
+        $('tr.item', $(ui.item.context).closest('table')).each (index, item) ->
+          slides[$(item).data('item-id')] = index
+          return
         $.ajax(
           type: 'POST'
           url: window.location.pathname + '/update_position'
           dataType: 'json'
-          data: { slide: {slide_id: item_id, position: position } }
+          data: { slides: slides }
         )
     )

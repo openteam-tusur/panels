@@ -46,9 +46,9 @@ class Manage::SlidesController < Manage::ApplicationController
   end
 
   def update_position
-    @slide = Slide.find(slide_params[:slide_id])
-    @slide.position = slide_params[:position]
-    @slide.save
+    params[:slides].each do |id, position|
+      Slide.find(id).update_attribute(:position, position)
+    end
 
     render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
   end
@@ -63,7 +63,7 @@ class Manage::SlidesController < Manage::ApplicationController
     end
 
     def get_entries
-      @entries_collection = Entry.where.not(type: 'Cutaway') - @panel.entries
+      @entries_collection = Entry.where.not(type: 'Cutaway') #- @panel.entries
     end
 
 end
