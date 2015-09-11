@@ -5,7 +5,7 @@
 
   show = (result)->
     $('.date-week-time').text(result)
-    timer = setTimeout(update_time, 20 * 1000)
+    timer = setTimeout(update_time, 5 * 1000)
 
   get_time = ->
     $.ajax
@@ -15,5 +15,8 @@
       success: (data, textStatus, jqXHR) ->
         result = "#{data.date}, #{data.current_week}, #{data.time}"
         show(result)
+
+      complete: (query, status) ->
+        if status == "error" then setTimeout(get_time(), 5*1000) else return
 
   get_time()
