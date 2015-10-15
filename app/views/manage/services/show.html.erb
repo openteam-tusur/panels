@@ -1,0 +1,64 @@
+<div class='row'>
+  <div class='col-xs-6'>
+    <h1>Информация о ролике</h1>
+    <p><b>Доступносто:</b> <%= @video.available? ? 'Да' : 'Нет' %></p>
+    <% if @video.available? %>
+      <% begin %>
+        <p>
+          <b>Заголовок:</b>
+          <%= @video.title %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Описание:</b>
+          <%= @video.description %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Продолжительность:</b>
+          <%= I18n.t 'duration', :count => @video.duration %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Дата:</b>
+          <%= I18n.l @video.date %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Ссылка на скриншот (малый):</b>
+          <%= link_to @video.thumbnail_small, @video.thumbnail_small, :target => '_blank' %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Ссылка на скриншот (средний):</b>
+          <%= link_to @video.thumbnail_medium, @video.thumbnail_medium, :target => '_blank' %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Ссылка на скриншот (большой):</b>
+          <%= link_to @video.thumbnail_large, @video.thumbnail_large, :target => '_blank' %>
+        </p>
+      <% rescue %>
+      <% end %>
+      <% begin %>
+        <p>
+          <b>Embed url:</b>
+          <%= link_to @video.embed_url, @video.embed_url, :target => '_blank' %>
+        </p>
+      <% rescue %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

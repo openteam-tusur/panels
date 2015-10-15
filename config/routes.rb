@@ -16,6 +16,8 @@ Rails.application.routes.draw do
         post :update_position, :on => :collection
       end
     end
+    resources :services, :only => :index
+    get :service, :to => 'services#show'
   end
 
   resources :users, :only => [] do

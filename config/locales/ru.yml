@@ -2,6 +2,12 @@ ru:
   app:
     title: 'АИС «Объявления»'
 
+  duration:
+    zero: '%{count} секунд'
+    one: '%{count} секунда'
+    few: '%{count} секунды'
+    many: '%{count} секунд'
+
   entry:
     type:
       Text:    'Текст'
@@ -63,7 +69,7 @@ ru:
     - Пт
     - Сб
     abbr_month_names:
-    - 
+    -
     - янв.
     - февр.
     - марта
@@ -89,7 +95,7 @@ ru:
       long: "%-d %B %Y"
       short: "%-d %b"
     month_names:
-    - 
+    -
     - января
     - февраля
     - марта

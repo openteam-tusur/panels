@@ -1,0 +1,9 @@
+<div class='row'>
+  <div class='col-xs-6'>
+    <h1>Запрос информации о ролике</h1>
+    <%= simple_form_for :service, :url => manage_service_path, :method => :get do |f| %>
+      <%= f.input :url, :label => 'Ссылка на ролик Youtube', :autofocus => true %>
+      <%= f.submit 'Получить информацию', :class => 'btn btn-primary', :name => nil %>
+    <% end %>
+  </div>
+</div>
