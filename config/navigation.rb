@@ -19,7 +19,7 @@ SimpleNavigation::Configuration.run do |navigation|
       :highlights_on => /^\/manage\/permissions/ if can? :manage, Permission
 
     primary.item :manage_searvice, 'Сервис', manage_services_path,
-      :highlights_on => /^\/manage\/services/ if current_user.admin?
+      :highlights_on => /^\/manage\/services/ if current_user && current_user.admin?
 
   end
 
