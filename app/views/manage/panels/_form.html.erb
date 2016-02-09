@@ -2,6 +2,7 @@
   <div class='col-xs-6'>
     <%= simple_form_for [:manage, @panel] do |f|  %>
       <%= f.input :title %>
+      <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
       <%= f.button :submit  %>
     <% end %>
   </div>

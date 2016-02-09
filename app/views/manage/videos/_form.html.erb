@@ -3,6 +3,7 @@
     <%= simple_nested_form_for [:manage, @video] do |f|  %>
       <%= f.input :title %>
       <%= f.input :video %>
+      <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
       <%= render :partial => 'nested_slide_form', locals: { f: f } %>
       <%= f.button :submit  %>
       <%= link_to 'Cancel', manage_entries_path %>

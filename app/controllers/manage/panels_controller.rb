@@ -1,15 +1,13 @@
 class Manage::PanelsController < Manage::ApplicationController
+  include EntryContext
+  include EntryHelpers
 
   def index
-    @panels = Panel.all.order('id desc')
+    @panels = current_user.panels.sort_by(&:updated_at)
   end
 
   def show
-    if @panel = Panel.find_by(:id => params[:id])
-    else
-      redirect_to manage_panels_path
-      flash[:warning] = 'Не удалось найти панель с таким id'
-    end
+    @panel = Panel.find_by(:id => params[:id])
   end
 
   def new
@@ -18,44 +16,28 @@ class Manage::PanelsController < Manage::ApplicationController
 
   def create
     @panel = Panel.new(panel_params)
-    if @panel.save
-      flash['success'] = 'Запись успешно добавлена'
-      redirect_to manage_panels_path
-    else
-      flash['alert'] = 'Не удалось добавить запись'
-      render :action => :new
-    end
+    flash_and_redirect_actions !!@panel.save, :new, :manage_panels
   end
 
   def edit
     @panel = Panel.find_by(id: params[:id])
-    redirect_to manage_panels_path if @panel.nil?
   end
 
   def update
     @panel = Panel.find_by(id: params[:id])
-    if @panel.update_attributes(panel_params)
-      flash['success'] = 'Запись успешно отредактирована'
-      redirect_to manage_panels_path
-    else
-      render :action => :edit
-    end
+    flash_and_redirect_actions !!@panel.update_attributes(panel_params), :edit, :manage_panels
   end
 
   def destroy
     if Panel.find_by(:id => params[:id]).destroy
-      flash['success'] = 'Запись успешно удалена'
-      redirect_to manage_panels_path
-    else
-      flash['alert'] = 'запись с таким id не найдена'
-      redirect_to manage_panels_path
+      flash_and_redirect "Запись успешно удалена", :success, :manage_panels
     end
   end
 
   private
 
     def panel_params
-      params.require(:panel).permit(:title)
+      params.require(:panel).permit(:title, :context_id)
     end
 
 end

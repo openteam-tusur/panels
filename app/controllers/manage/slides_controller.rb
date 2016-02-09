@@ -1,4 +1,6 @@
 class Manage::SlidesController < Manage::ApplicationController
+  include EntryHelpers
+
   before_filter :get_panel
   before_filter :get_entries, :only => [:new, :create, :edit, :update]
 
@@ -13,12 +15,7 @@ class Manage::SlidesController < Manage::ApplicationController
   def create
     @slide = @panel.slides.new(slide_params)
     @slide.position = @panel.slides.count + 1
-    if @slide.save
-      redirect_to manage_panel_slides_path(@panel.id)
-      flash[:success] = 'Слайд успешно создан'
-    else
-      render :action => :new
-    end
+    flash_and_redirect_actions !!@slide.save, :new, manage_panel_slides_path(@panel.id)
   end
 
   def edit
@@ -28,21 +25,12 @@ class Manage::SlidesController < Manage::ApplicationController
 
   def update
     @slide = Slide.find_by(id: params[:id])
-    if  @slide.update_attributes(slide_params) && @slide.valid?
-      @slide.save
-      redirect_to manage_panel_slides_path(@panel.id)
-      flash[:success] = 'Слайд успешно отредактирован'
-    else
-      render :action => :edit
-    end
+    flash_and_redirect_actions !!(@slide.valid? && @slide.update_attributes(slide_params)), :edit, manage_panel_slides_path(@panel.id)
   end
 
   def destroy
-    @slide = Slide.find_by(id: params[:id])
-    if @slide.destroy
-      redirect_to manage_panel_slides_path(Panel.find_by(id: params[:panel_id]))
-      flash[:success] = 'Слайд успешно удален'
-    end
+    @slide = Slide.find_by(id: params[:id]).destroy
+    flash_and_redirect "Слайд успешно удален", :success, manage_panel_slides_path(@slide.panel)
   end
 
   def update_position
@@ -63,7 +51,7 @@ class Manage::SlidesController < Manage::ApplicationController
     end
 
     def get_entries
-      @entries_collection = Entry.where.not(type: 'Cutaway') - @panel.entries
+      @entries_collection = current_user.entries - @panel.entries
     end
 
 end

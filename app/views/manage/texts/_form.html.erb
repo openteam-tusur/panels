@@ -3,6 +3,7 @@
     <%= simple_nested_form_for [:manage, @text] do |f|  %>
       <%= f.input :title %>
       <%= f.input :text, input_html: {:class => :ckeditor} %>
+      <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
       <%= render :partial => 'nested_slide_form', locals: { f: f } %>
       <%= f.button :submit  %>
     <% end %>

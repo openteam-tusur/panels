@@ -1,4 +1,6 @@
 class Manage::TextsController < Manage::ApplicationController
+  include EntryContext
+  include EntryHelpers
 
   def new
     @text = Text.new
@@ -6,13 +8,7 @@ class Manage::TextsController < Manage::ApplicationController
 
   def create
     @text = Text.new(text_params)
-    if @text.save
-      flash['success'] = 'Запись добавлена'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :action => :new
-    end
+    flash_and_redirect_actions !!@text.save, :new
   end
 
   def edit
@@ -21,18 +17,12 @@ class Manage::TextsController < Manage::ApplicationController
 
   def update
     @text = Text.find(params[:id])
-    if @text.update_attributes(text_params)
-      flash['success'] = 'Запись отредактирована'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :action => :edit
-    end
+    flash_and_redirect_actions !!@text.update_attributes(text_params), :edit
   end
 
 
   private
     def text_params
-      params.require(:text).permit(:text, :title, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
+      params.require(:text).permit(:text, :title, :context_id, slides_attributes: [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
     end
 end

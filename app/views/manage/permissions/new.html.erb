@@ -6,17 +6,19 @@
 
 <div class='row'>
   <div class='col-sm-6'>
-    <%= simple_form_for [:manage, @permission], :url => manage_permissions_path(@permission) do |f| %>
+    <%= simple_form_for [:manage, @permission], url: manage_permissions_path(@permission) do |f| %>
 
-      <%= f.input :name, :required => true, :autofocus => true,
-        :input_html => { :class => 'js-autocomplete', :data => { :url => search_users_path } },
-        :placeholder => 'Начните вводить ФИО (зависит от регистра)' %>
-      <%= f.input :user_id, :as => :hidden, :input_html => { :class => 'js-autocomplete-target' } %>
-      <%= f.input :role, :collection => Permission.available_roles.map{ |role| [I18n.t("role_names.#{role}", :title => '').strip, role] } %>
+      <%= f.input :name, required: true, autofocus: true,
+        input_html: { class: 'js-autocomplete', data: { url: search_users_path } },
+        placeholder: 'Начните вводить ФИО (зависит от регистра)' %>
+      <%= f.input  :user_id, as: :hidden, input_html: { class: 'js-autocomplete-target' } %>
+      <%= f.input  :role, collection: Permission.available_roles.map{ |role| [I18n.t("role_names.#{role}", title: '').strip, role] } , input_html: {class: "js-role-input"}%>
+      <%= f.input :context, input_html: {class: "js-autocomplete-subdivisions", data: {url: subdivisions_path} } %>
+      <%= f.input :context_id, as: :hidden, input_html: {class: "js-autocomplete-subdivisions-target"} %>
 
       <div class='actions'>
-        <%= f.submit 'Сохранить', :class => 'btn btn-sm btn-primary' %>
-        <%= link_to 'Отмена', manage_permissions_path, :class => 'btn btn-sm btn-default' %>
+        <%= f.submit 'Сохранить', class:'btn btn-sm btn-primary js-submit-button'%>
+        <%= link_to 'Отмена', manage_permissions_path, class: 'btn btn-sm btn-default' %>
       </div>
     <% end %>
   </div>

@@ -1,9 +1,12 @@
 class Entry < ActiveRecord::Base
 
+  include ContextMethods
   has_many :slides, :dependent => :destroy
   has_many :panels, :through => :slides
 
   accepts_nested_attributes_for :slides,  :allow_destroy => true, :reject_if => :slide_invalid?
+  validates :context_id, presence: true
+
 
   private
 

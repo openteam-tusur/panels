@@ -1,4 +1,6 @@
 class Manage::VideosController < Manage::ApplicationController
+  include EntryContext
+  include EntryHelpers
 
   def new
     @video = Video.new
@@ -6,13 +8,7 @@ class Manage::VideosController < Manage::ApplicationController
 
   def create
     @video = Video.new(video_params)
-    if @video.save
-      flash['success'] = 'Запись добавлена'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :new
-    end
+    flash_and_redirect_actions !!@video.save, :new
   end
 
   def edit
@@ -21,19 +17,13 @@ class Manage::VideosController < Manage::ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    if @video.update_attributes(video_params)
-      flash['success'] = 'Запись отредактирована'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :edit
-    end
+    flash_and_redirect_actions !!@video.update_attributes(video_params), :edit
   end
 
   private
 
   def video_params
-    params.require(:video).permit(:title, :video, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
+    params.require(:video).permit(:title, :video, :context_id, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
   end
 
 end

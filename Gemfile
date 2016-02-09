@@ -4,6 +4,7 @@ group :default do
   gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
   gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
   gem 'bootstrap-sass'
+  gem 'bower-rails'
   gem 'cancancan'
   gem 'coffee-rails', '~> 4.1.0'
   gem 'compass-rails', '~> 2.0.4'
@@ -41,8 +42,12 @@ group :development do
   gem 'capistrano-bundler', '= 1.1.2', :require => false
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.9'
+  gem 'rails-erd'
 end
 
 group :test do
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem "fakeredis", :require => "fakeredis/rspec"
 end

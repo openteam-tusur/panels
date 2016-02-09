@@ -1,7 +1,14 @@
 <tr>
   <td><%= permission.user %></td>
   <td><%= permission.role_text %></td>
-  <td><%= mail_to permission.user.email %></td>
+  <% if permission.user.try :email %>
+    <td><%= mail_to permission.user.email %></td>
+  <% else %>
+    <td></td>
+  <% end %>
+  <td>
+    <%=  permission.context_title %>
+  </td>
   <td>
     <%= link_to manage_permission_path(permission), :method => :delete, :data => { :confirm => 'Вы уверены?' }, :title => 'Удалить запись' do %>
       <%= icon 'trash-o'%>

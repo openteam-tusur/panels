@@ -1,4 +1,6 @@
 class Manage::PhotosController < Manage::ApplicationController
+  include EntryContext
+  include EntryHelpers
 
   def new
     @photo = Photo.new
@@ -6,13 +8,7 @@ class Manage::PhotosController < Manage::ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    if @photo.save
-      flash['succcess'] = 'Запись создана'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :action => :new
-    end
+    flash_and_redirect_actions !!@photo.save, :new
   end
 
   def edit
@@ -21,19 +17,13 @@ class Manage::PhotosController < Manage::ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    if @photo.update_attributes(photo_params)
-      flash['succcess'] = 'Запись отредактирована'
-      redirect_to :manage_entries
-    else
-      flash['alert'] = 'Ошибка в одном из полей'
-      render :action => :edit
-    end
+    flash_and_redirect_actions !!@photo.update_attributes(photo_params), :edit
   end
 
   private
 
     def photo_params
-      params.require(:photo).permit(:title, :file, :slides_attributes => [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
+      params.require(:photo).permit(:title, :file, :context_id, slides_attributes: [:id, :duration, :entry_id, :panel_id, :starts_at, :ends_at ])
     end
 
 end

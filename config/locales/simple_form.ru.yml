@@ -7,10 +7,30 @@ ru:
       mark: '*'
     error_notification:
       default_message: "Возникли следующие проблемы:"
+    labels:
+      permission:
+        context: "Контекст"
+      video:
+        context_id: "Контекст"
+      photo:
+        context_id: "Контекст"
+      text:
+        context_id: "Контекст"
+
+    placeholders:
+      permission:
+        context:    "Контекст"
+      video:
+        context_id: "Выберите контекст"
+      photo:
+        context_id: "Выберите контекст"
+      text:
+        context_id: "Выберите контекст"
+
+
 
   helpers:
     submit:
       create: "Создать %{model}"
       update: "Сохранить %{model}"
       cancel: "Отмена"
-
