@@ -24,8 +24,6 @@ Rails.application.routes.draw do
     get 'search', :on => :collection
   end
 
-  get '/subdivisions' => "subdivisions#collection", as: :subdivisions
-
   get '/time' => 'integration#time_and_week'
 
   root 'panels#index'
