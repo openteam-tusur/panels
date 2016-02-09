@@ -13,8 +13,7 @@
         placeholder: 'Начните вводить ФИО (зависит от регистра)' %>
       <%= f.input  :user_id, as: :hidden, input_html: { class: 'js-autocomplete-target' } %>
       <%= f.input  :role, collection: Permission.available_roles.map{ |role| [I18n.t("role_names.#{role}", title: '').strip, role] } , input_html: {class: "js-role-input"}%>
-      <%= f.input :context, input_html: {class: "js-autocomplete-subdivisions", data: {url: subdivisions_path} } %>
-      <%= f.input :context_id, as: :hidden, input_html: {class: "js-autocomplete-subdivisions-target"} %>
+      <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
 
       <div class='actions'>
         <%= f.submit 'Сохранить', class:'btn btn-sm btn-primary js-submit-button'%>
