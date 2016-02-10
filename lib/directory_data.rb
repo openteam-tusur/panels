@@ -7,7 +7,6 @@ class DirectoryData
   end
 
   def get_title(id)
-    puts id
     res = data.select{|s| s['id'] == id }.first
     res.nil? ? res : res["title"]
   end

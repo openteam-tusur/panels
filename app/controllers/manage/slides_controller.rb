@@ -9,7 +9,7 @@ class Manage::SlidesController < Manage::ApplicationController
   end
 
   def new
-    @slide = Slide.new
+    @slide = Slide.new(panel_id: params[:panel_id] )
   end
 
   def create

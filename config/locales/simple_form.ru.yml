@@ -9,23 +9,25 @@ ru:
       default_message: "Возникли следующие проблемы:"
     labels:
       permission:
-        context: "Контекст"
+        context: "Подразделение"
       video:
-        context_id: "Контекст"
+        context_id: "Подразделение"
       photo:
-        context_id: "Контекст"
+        context_id: "Подразделение"
       text:
-        context_id: "Контекст"
+        context_id: "Подразделение"
+      panel:
+        context_id: "Подразделение"
 
     placeholders:
       permission:
         context:    "Контекст"
       video:
-        context_id: "Выберите контекст"
+        context_id: "Выберите подразделение"
       photo:
-        context_id: "Выберите контекст"
+        context_id: "Выберите подразделение"
       text:
-        context_id: "Выберите контекст"
+        context_id: "Выберите подразделение"
 
 
 

@@ -1,8 +1,10 @@
 class Manage::EntriesController < Manage::ApplicationController
   include EntryHelpers
 
+  helper_method :page
+
   def index
-    @entries = current_user.entries
+    @entries = current_user.entries.page(page).per(10)
   end
 
   def destroy
@@ -13,4 +15,7 @@ class Manage::EntriesController < Manage::ApplicationController
     @entry = Entry.find(params[:id])
   end
 
+  def page
+    params[:page] || 1
+  end
 end

@@ -13,7 +13,7 @@ SimpleNavigation::Configuration.run do |navigation|
       :highlights_on => /^\/manage\/(entries|texts|photos|videos)/ if can? :manage, Entry
 
     primary.item :manage_entries, 'Управление перебивками', manage_cutaways_path,
-      :highlights_on => /^\/manage\/(cutaways)/ if can? :manage, Entry
+      :highlights_on => /^\/manage\/(cutaways)/ if can? :manage, Cutaway
 
     primary.item :manage_permissions, 'Управление правами', manage_permissions_path,
       :highlights_on => /^\/manage\/permissions/ if can? :manage, Permission

@@ -26,8 +26,8 @@ class Manage::PermissionsController < Manage::ApplicationController
   private
 
   def permission_params
-    params[:permission][:context_id] = nil if params[:permission][:role] = "admin"
-    params.require(:permission).permit(:user, :user_id, :role, :context_id, :context_type)
+    params[:permission][:context_id] = nil if params[:permission][:role] == "admin"
+    params.require(:permission).permit(:name, :user_id, :role, :context_id, :context_type)
   end
 
 end

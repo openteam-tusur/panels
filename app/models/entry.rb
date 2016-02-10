@@ -4,15 +4,17 @@ class Entry < ActiveRecord::Base
   has_many :slides, :dependent => :destroy
   has_many :panels, :through => :slides
 
-  accepts_nested_attributes_for :slides,  :allow_destroy => true, :reject_if => :slide_invalid?
+  accepts_nested_attributes_for :slides,  :allow_destroy => true, :reject_if => :all_except_datetime_is_blank
   validates :context_id, presence: true
 
+  scope :except_cutaways, -> { where.not(type: 'Cutaway') }
+  scope :ordered, -> { order('id desc') }
 
   private
 
-    def slide_invalid?(attributed)
-      Panel.find(attributed['panel_id']).slides.map(&:entry_id).include? self.id
-    end
+  def all_except_datetime_is_blank(attributes)
+    attributes["panel_id"].blank?
+  end
 
 end
 

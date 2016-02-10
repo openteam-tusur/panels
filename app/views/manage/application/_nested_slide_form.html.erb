@@ -1,5 +1,5 @@
 <%= f.simple_fields_for :slides do |s| %>
-  <%= s.association :panel %>
+  <%= s.association :panel, :collection => current_user.panels %>
   <%= s.input :duration %>
   <%= s.input :starts_at %>
   <%= s.input :ends_at %>

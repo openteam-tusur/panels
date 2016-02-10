@@ -7,13 +7,19 @@ class User
   end
 
   def entries
-    return Entry.all.where.not(type: 'Cutaway').order('id desc') if admin?
-    permissions.flat_map{|p| Entry.all.where.not(type: 'Cutaway').where(context_id: p.context_id ).order('id desc')}
+    return Entry.except_cutaways.ordered if admin?
+
+    Entry.except_cutaways.with_context(context_ids).ordered
   end
 
   def panels
     return Panel.all if admin?
-    permissions.flat_map{|p| Panel.where(context_id: p.context_id)}
+
+    Panel.with_context(context_ids)
+  end
+
+  def context_ids
+    permissions.pluck(:context_id)
   end
 
   Permission.available_roles.each do |role|

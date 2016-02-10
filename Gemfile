@@ -15,6 +15,7 @@ group :default do
   gem 'gravtastic'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
+  gem 'kaminari'
   gem 'nested_form'
   gem 'non-stupid-digest-assets'
   gem 'normalize-rails'
@@ -43,6 +44,7 @@ group :development do
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.9'
   gem 'rails-erd'
+  gem 'quiet_assets'
 end
 
 group :test do

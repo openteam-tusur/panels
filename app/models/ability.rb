@@ -5,11 +5,19 @@ class Ability
     return unless user
     can :manage, :all if user.admin?
 
-    can :manage, [Panel, Slide, Entry] do |model|
+    can :manage, [Panel, Entry] do |model|
       manager_contexts(user).include?(model.context_id)
     end
 
-    can :create, [Panel, Slide, Entry] if user.manager?
+
+    can :manage, Slide do |s|
+      manager_contexts(user).include?(s.panel.try :context_id)
+    end
+
+    can [:create, :new], [Panel, Slide, Entry] if user.manager?
+
+    cannot :manage, Cutaway if !user.admin?
+
   end
 
   private

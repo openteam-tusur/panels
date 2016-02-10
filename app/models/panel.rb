@@ -1,6 +1,6 @@
 class Panel < ActiveRecord::Base
   include ContextMethods
-  has_many :slides
+  has_many :slides, dependent: :destroy
   has_many :entries, :through => :slides
   validates_presence_of :title, :context_id
 
