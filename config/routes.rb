@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   get '/time' => 'integration#time_and_week'
+  get '/documentation' => "documentation#show"
 
   root 'panels#index'
 

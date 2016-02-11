@@ -1,6 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "chosen": "latest"
+    "chosen": "latest",
+    "jquery.scrollTo": "latest"
   }
 }

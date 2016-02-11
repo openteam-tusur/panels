@@ -32,3 +32,9 @@ session_store:
 
 youtube:
   api-key: 'YOUTUBE-API-KEY'
+
+directory:
+  subdivisions_url: "example.url"
+
+cms:
+  url:  'cms.url'
