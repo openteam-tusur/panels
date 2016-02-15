@@ -18,8 +18,10 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :manage_permissions, 'Управление правами', manage_permissions_path,
       :highlights_on => /^\/manage\/permissions/ if can? :manage, Permission
 
-    primary.item :manage_searvice, 'Сервис', manage_services_path,
+    primary.item :manage_service, 'Сервис', manage_services_path,
       :highlights_on => /^\/manage\/services/ if current_user && current_user.admin?
+
+    primary.item :documentation, 'Как пользоваться системой?', documentation_path
 
   end
 

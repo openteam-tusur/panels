@@ -7,6 +7,11 @@
  * = require jquery_nested_form
  * = require bootstrap
  * = require bootstrap/scrollspy
+ * = require bootstrap/tooltip
+ * = require moment
+ * = require moment/ru.js
+ * = require bootstrap-datetimepicker
+ * = require datetimepicker-init
  * = require esp-ckeditor
  * = require autocomplete
  * = require manage/update_slide_position

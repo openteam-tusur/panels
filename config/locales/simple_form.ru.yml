@@ -8,16 +8,27 @@ ru:
     error_notification:
       default_message: "Возникли следующие проблемы:"
     labels:
+      slide: &slide
+        panel:      "Выберите панель"
+
       permission:
         context: "Подразделение"
       video:
         context_id: "Подразделение"
+        slides:
+          <<: *slide
       photo:
         context_id: "Подразделение"
+        slides:
+          <<: *slide
       text:
         context_id: "Подразделение"
+        slides:
+          <<: *slide
+
       panel:
         context_id: "Подразделение"
+
 
     placeholders:
       permission:

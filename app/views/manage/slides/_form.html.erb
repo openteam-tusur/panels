@@ -2,14 +2,14 @@
   <div class='col-xs-6'>
     <%= simple_form_for  [:manage, @panel, @slide ] do |f|  %>
       <div class="row">
-        <%= f.association :entry, :collection => @entries_collection %>
+        <%= f.association :entry, collection: @entries_collection %>
       </div>
       <div class='row'>
         <div class='col-xs-6'>
-          <%= f.input :starts_at %>
+          <%= f.input :starts_at, as: :string, input_html: { class: "js-date-picker", value: I18n.l(f.object.starts_at || Time.zone.now) } %>
         </div>
         <div class='col-xs-6'>
-          <%= f.input :ends_at %>
+          <%= f.input :ends_at, as: :string, input_html: { class: "js-date-picker", value: I18n.l(f.object.ends_at || Time.zone.now )} %>
         </div>
       </div>
       <div class="row">

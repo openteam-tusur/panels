@@ -1,8 +1,21 @@
 <%= f.simple_fields_for :slides do |s| %>
-  <%= s.association :panel, :collection => current_user.panels %>
-  <%= s.input :duration %>
-  <%= s.input :starts_at %>
-  <%= s.input :ends_at %>
-  <%= s.link_to_remove "Удалить слайд" %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= s.association :panel, :collection => current_user.panels %>
+      <div class='row'>
+        <div class='col-xs-6'>
+          <%= s.input :starts_at, as: :string, input_html: { class: "js-date-picker", value: l(Time.zone.now)} %>
+        </div>
+        <div class='col-xs-6'>
+          <%= s.input :ends_at, as: :string, input_html: { class: "js-date-picker", value: l(Time.zone.now)} %>
+        </div>
+      </div>
+      <%= s.input :duration %>
+      <%= s.link_to_remove content_tag(:span, '', class: "glyphicon glyphicon-remove-circle big-glyphicon", title: "Удалить", data: { toggle: "tooltip", placement: "left" }) %>
+    </div>
+  </div>
 <% end %>
-<%= f.link_to_add 'Добавить слайд', :slides %>
+<%= f.link_to_add content_tag(:span, '', class: "glyphicon glyphicon glyphicon-plus big-glyphicon",
+                              title: "Добавить слайд с этим объявлением",
+                              data: { toggle: "tooltip", placement: "right" }),
+                  :slides %>

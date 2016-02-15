@@ -5,8 +5,8 @@
       <%= f.input :video %>
       <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
       <%= render :partial => 'nested_slide_form', locals: { f: f } %>
-      <%= f.button :submit  %>
-      <%= link_to 'Cancel', manage_entries_path %>
+      <%= f.button :submit, class: "btn btn-primary"  %>
+      <%= link_to 'Отмена', manage_entries_path %>
     <% end %>
   </div>
 </div>
