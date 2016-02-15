@@ -7,10 +7,10 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :main_page, I18n.t('page_title.application.index'), root_path
 
     primary.item :manage_panels, 'Управление панелями', manage_panels_path,
-      :highlights_on => /^\/manage\/panels/ if can? :manage, Panel
+      :highlights_on => /^\/manage\/panels/ if can? :index, Panel
 
     primary.item :manage_entries, 'Управление объявлениями', manage_entries_path,
-      :highlights_on => /^\/manage\/(entries|texts|photos|videos)/ if can? :manage, Entry
+      :highlights_on => /^\/manage\/(entries|texts|photos|videos)/ if can? :index, Entry
 
     primary.item :manage_entries, 'Управление перебивками', manage_cutaways_path,
       :highlights_on => /^\/manage\/(cutaways)/ if can? :manage, Cutaway
