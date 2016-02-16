@@ -6,7 +6,7 @@
       <%= render :partial => 'manage/entries/entry_context_selection', locals: {f: f, user: current_user} %>
       <%= render :partial => 'nested_slide_form', locals: { f: f } %>
       <%= f.button :submit, class: "btn btn-primary" %>
-      <%= link_to 'Отмена', manage_entries_path %>
+      <%= link_to 'Отмена', manage_entries_path, class: 'cancel-link' %>
     <% end %>
   </div>
 </div>

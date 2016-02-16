@@ -41,6 +41,7 @@ ru:
       permission:
         name: 'Ф.И.О.'
         role: 'Роль'
+        context_id: 'Контекст'
       panel:
         title: 'Название панели'
       slide:

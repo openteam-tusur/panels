@@ -15,7 +15,9 @@
     </div>
   </div>
 <% end %>
-<%= f.link_to_add content_tag(:span, '', class: "glyphicon glyphicon glyphicon-plus big-glyphicon",
+<%= f.link_to_add (content_tag(:span, '', class: "glyphicon glyphicon glyphicon-plus big-glyphicon",
                               title: "Добавить слайд с этим объявлением",
-                              data: { toggle: "tooltip", placement: "right" }),
+                              data: { toggle: "tooltip", placement: "right" }) +
+                  content_tag(:span, "Добавить слайд на панель", class: 'link-title')
+                  ),
                   :slides %>
