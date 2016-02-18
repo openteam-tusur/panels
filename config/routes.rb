@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     get 'search', :on => :collection
   end
 
-  get '/time' => 'integration#time_and_week'
+  get '/datetime' => 'integration#datetime'
+  get '/week' => 'integration#week'
   get '/documentation' => "documentation#show"
 
   root 'panels#index'

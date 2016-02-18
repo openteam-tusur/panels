@@ -1,22 +1,38 @@
 @init_panel_time = ->
-  update_time = ->
-    $('.date-week-time')
-    get_time()
 
-  show = (result)->
-    $('.date-week-time').text(result)
-    timer = setTimeout(update_time, 5 * 1000)
-
-  get_time = ->
+  update_datetime = ->
     $.ajax
-      url: '/time'
-      error: (jqXHR, textStatus, errorThrown) ->
-
+      url: '/datetime'
       success: (data, textStatus, jqXHR) ->
-        result = "#{data.date}, #{data.current_week}, #{data.time}"
-        show(result)
+        return if data.date == undefined || data.time == undefined
+        $('.date-week-time .date').text("#{data.date},")
+        $('.date-week-time .time').text("#{data.time}")
+        return
 
-      complete: (query, status) ->
-        if status == "error" then setTimeout(get_time(), 5*1000) else return
+    return
 
-  get_time()
+  setInterval ->
+    update_datetime()
+    return
+  , 10 * 1000 # every 10 seconds
+
+  update_datetime()
+
+  update_week = ->
+    $.ajax
+      url: '/week'
+      success: (data, textStatus, jqXHR) ->
+        return if data.week == undefined
+        $('.date-week-time .week').text("#{data.week},")
+        return
+
+    return
+
+  setInterval ->
+    update_week()
+    return
+  , 60 * 60 * 1000 # every 1 hours
+
+  update_week()
+
+  return
