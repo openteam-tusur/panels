@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     return unless user
-    alias_action :new, :create, :edit, :update, :destroy, :to => :crud
+    alias_action  :new, :create, :show, :edit, :update, :destroy, :to => :crud
     can :manage, :all if user.admin?
     can :index, [Panel, Entry] if user.manager?
 
