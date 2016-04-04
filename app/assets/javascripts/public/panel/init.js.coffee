@@ -50,7 +50,7 @@
     timer = setTimeout update_panel, timeout * 1000
     return
 
-  fade_in_content = (object) -> 
+  fade_in_content = (object) ->
     object.fadeIn(400)
     return
 
@@ -93,7 +93,7 @@
   #video functions
   init_youtube = ->
     onYouTubeIframeAPIReady = ->
-      #new object for YouTubeIframeAPI 
+      #new object for YouTubeIframeAPI
       sizes = player_sizes()
       player = new (YT.Player)('player',
         videoId: $("#player").data('value')
@@ -117,7 +117,12 @@
     onPlayerStateChange = (event) ->
       if event.data == YT.PlayerState.PLAYING
         init_progressbar(timeout * 1000)
+        localStorage.slide = slide
+        setTimeout (()->
+            update_panel() if parseInt(localStorage.slide) == parseInt(slide)
+          ), timeout * 1.2 * 1000
       else if event.data == YT.PlayerState.ENDED
+        localStorage.slide = null
         update_panel()
       return
 
