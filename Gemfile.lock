@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/thibaudgg/video_info.git
-  revision: 9566b9c517fee19687f93dc2189d478ba403a6e1
-  specs:
-    video_info (2.4.2)
-      addressable
-      htmlentities
-      iso8601
-      multi_json
-
-GIT
   remote: https://github.com/openteam-tusur/auth_client
   revision: b2aed658ecdbf2c3ba18da0ee857233cbbb36cdf
   specs:
@@ -65,7 +55,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     airbrake (3.1.17)
       builder
       multi_json
@@ -173,11 +163,10 @@ GEM
     hike (1.2.3)
     hirb (0.7.3)
     hiredis (0.6.0)
-    htmlentities (4.3.3)
+    htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
-    iso8601 (0.8.6)
     jquery-rails (4.0.4)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -358,6 +347,10 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    video_info (2.4.2)
+      addressable
+      htmlentities
+      multi_json
     whenever (0.9.4)
       chronic (>= 0.6.3)
 
@@ -411,7 +404,7 @@ DEPENDENCIES
   sqlite3
   tusur_header
   uglifier (>= 1.3.0)
-  video_info!
+  video_info (= 2.4.2)
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

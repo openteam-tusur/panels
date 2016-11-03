@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 group :default do
-  gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
-  gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
+  gem 'auth_client', git: 'https://github.com/openteam-tusur/auth_client'
+  gem 'auth_redis_user_connector', git: 'https://github.com/openteam-tusur/auth_redis_user_connector'
   gem 'bootstrap-sass'
   gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
   gem 'bower-rails'
@@ -35,11 +35,11 @@ group :default do
   gem 'simple_form'
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
-  gem 'video_info', :git => 'git://github.com/thibaudgg/video_info.git'
+  gem 'video_info', '2.4.2'
 end
 
 group :development do
-  gem 'annotate', :require => false
+  gem 'annotate', require: false
   gem 'capistrano'
   gem 'capistrano-auth-subscriber'
   gem 'capistrano-bundler'
@@ -53,5 +53,5 @@ group :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
-  gem "fakeredis", :require => "fakeredis/rspec"
+  gem 'fakeredis', require: 'fakeredis/rspec'
 end
