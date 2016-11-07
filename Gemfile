@@ -35,7 +35,7 @@ group :default do
   gem 'simple_form'
   gem 'tusur_header'
   gem 'uglifier', '>= 1.3.0'
-  gem 'video_info', '2.4.2'
+  gem 'video_info', git: 'https://github.com/thibaudgg/video_info.git', ref: '9566b9c'
 end
 
 group :development do
