@@ -1,2 +1,2 @@
-<p><%= image_tag VideoInfo.new(video.video).thumbnail_small %></p>
+<p><%= image_tag VideoInfo.new(video.video).thumbnail_small rescue "VIDEO ID: #{video.id}" %></p>
 <p><%= video.title %></p>
