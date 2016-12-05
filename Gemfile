@@ -21,7 +21,7 @@ group :default do
   gem 'non-stupid-digest-assets'
   gem 'normalize-rails'
   gem 'momentjs-rails'
-  gem 'openteam-commons'
+  gem 'openteam-commons', '~> 0.3.3'
   gem 'paperclip-elvfs'
   gem 'pg'
   gem 'rails', '~> 4.2.1'
@@ -40,13 +40,11 @@ end
 
 group :development do
   gem 'annotate', require: false
-  gem 'capistrano'
   gem 'capistrano-auth-subscriber'
-  gem 'capistrano-bundler'
   gem 'hirb'
-  gem 'openteam-capistrano', '~> 1.0.9'
-  gem 'rails-erd'
+  gem 'openteam-capistrano', '~> 1.0.16'
   gem 'quiet_assets'
+  gem 'rails-erd'
 end
 
 group :test do
