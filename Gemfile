@@ -41,6 +41,7 @@ end
 group :development do
   gem 'annotate', require: false
   gem 'capistrano-auth-subscriber'
+  gem 'capistrano-db-tasks', '0.4', require: false
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.16'
   gem 'quiet_assets'
