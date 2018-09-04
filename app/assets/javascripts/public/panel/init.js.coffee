@@ -120,7 +120,7 @@
         localStorage.slide = slide
         setTimeout (()->
             update_panel() if parseInt(localStorage.slide) == parseInt(slide)
-          ), timeout * 1.2 * 1000
+          ), timeout * 1000
       else if event.data == YT.PlayerState.ENDED
         localStorage.slide = null
         update_panel()
